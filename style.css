@@ -45,10 +45,10 @@ p {
     padding-top: 5rem;
     background-color: white;
     color: black;
+    padding-bottom: 5rem;
 }
 
 .credits {
-    margin-top: -3rem;
     padding-bottom: 5rem;
 }
 .Chap1 {
@@ -100,24 +100,24 @@ p {
 }
 
 .Chap2T {
-    background-color: navy;
-    color: gold;
+    background-color: rgb(0, 0, 67);
+    color: rgb(233, 173, 8);
     padding-top: 5rem;
     margin-top: 5rem;
     padding-bottom: 5rem;
 }
 
 .Chap3T {
-    background-color: crimson;
-    color: cream;
+    background-color: rgb(143, 10, 36);
+    color: #f7f6ee;
     padding-top: 5rem;
     margin-top: 5rem;
     padding-bottom: 5rem;
 }
 
 .Chap4T {
-    background-color: sagegreen;
-    color: cream;
+    background-color:rgb(111, 155, 111);
+    color: #f7f6ee;
     padding-top: 5rem;
     margin-top: 5rem;
     padding-bottom: 5rem;
