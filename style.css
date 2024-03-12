@@ -57,14 +57,14 @@ p {
     background-color: black;
     color: white;
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap1T */
-    padding-bottom: 5rem;
+    padding-bottom: 15rem;
     order: 1;
 }
 
 #Chap2T {
     background-color: rgb(0, 0, 67);
     color: rgb(233, 173, 8);
-    padding-top: 5rem;
+    padding-top: 15rem;
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap2 */
     padding-bottom: 15rem; /* Add more space at the bottom for scrolling */
     order: -1;
@@ -74,7 +74,7 @@ p {
     background-color: rgb(0, 0, 67);
     color: rgb(233, 173, 8);
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap2T */
-    padding-bottom: 5rem;
+    padding-bottom: 15rem;
     order: 1;
 }
 
