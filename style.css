@@ -35,7 +35,7 @@ p {
     max-width: 80%;
     font-size: 1.5rem;
     margin-top: 9rem;
-    margin-left: 9rem;
+    margin-left: 5%;
 }
 
 .title {
@@ -66,6 +66,7 @@ p {
     padding-bottom: 15rem;
     order: 1;
     text-align: center;
+    margin-left: 5%; /* Adjusted margin from the left edge */
 }
 
 #Chap2T {
@@ -84,6 +85,7 @@ p {
     padding-bottom: 15rem;
     order: 1;
     text-align: center;
+    margin-left: 5%; /* Adjusted margin from the left edge */
 }
 
 /* Add similar adjustments for other sections */
