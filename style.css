@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'Helvetica Neue', 'Baskerville';
+    src: url('HelveticaNeue.ttc') format('truetype');
+    src: url('Baskerville.ttc') format('truetype');
+  }
+  
+  html {
+    font-size: 1.0rem;
+  }
+  
+  body {
+    font-family: 'Baskerville', serif;
+  }
+  
+  header {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    align-items: center;
+    margin: 2rem;
+    background-color: #f7f6ee;
+    box-shadow: 0px 0px 1rem -10px black;
+    border-color: black;
+    border-radius: 3rem;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  .title {
+
+  }
+
+  h1 {
+    font: 'Helvetica Neue';
+    align-items: center;
+    font-size: x-large;
+  }
+  
+  h2 {
+    font: 'Helvetica Neue';
+    align-items: center;
+    font-size: medium;
+  }
+
+  p {
+    font: 'Baskerville';
+    align-content: normal;
+    font-size: small;
+  }
+  /*
+   * ADD YOUR STYLES HERE
+   */
