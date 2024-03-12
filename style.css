@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    font-family: 'Helvetica Neue', sans-serif, 'Baskerville', serif;
     overflow-x: hidden;
 }
 
@@ -22,6 +21,7 @@ h1 {
 
 p {
     text-align: justify;
+    font-family: 'Baskerville', serif;
     max-width: 80%;
 }
 
