@@ -53,7 +53,8 @@ p {
     padding-bottom: 5rem;
 }
 
-.Chap1T {
+/* Specific selectors for sections with IDs */
+#Chap1T {
     background-color: black;
     color: white;
     padding-top: 5rem;
@@ -61,14 +62,14 @@ p {
     padding-bottom: 15rem; /* Add more space at the bottom for scrolling */
 }
 
-.Chap1 {
+#Chap1 {
     background-color: black;
     color: white;
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap1T */
     padding-bottom: 5rem;
 }
 
-.Chap2T {
+#Chap2T {
     background-color: rgb(0, 0, 67);
     color: rgb(233, 173, 8);
     padding-top: 5rem;
@@ -76,12 +77,15 @@ p {
     padding-bottom: 15rem; /* Add more space at the bottom for scrolling */
 }
 
-.Chap2 {
+#Chap2 {
     background-color: navy;
     color: gold;
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap2T */
     padding-bottom: 5rem;
 }
+
+/* Add similar adjustments for other sections */
+
 
 .Chap3T {
     background-color: rgb(143, 10, 36);
