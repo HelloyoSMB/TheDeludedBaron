@@ -34,7 +34,7 @@ p {
     font-family: 'Baskerville', serif;
     max-width: 80%;
     font-size: 1.5rem;
-    margin-top: 9rem;
+    margin-top: 10%;
     margin-left: 10%;
 }
 
@@ -62,17 +62,16 @@ p {
     background-color: black;
     color: white;
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap1T */
-    margin-bottom: 15rem;
     order: 1;
     text-align: center;
-
+    margin-left: 10%; /* Adjusted margin from the left edge */
 }
 
 #Chap2T {
     background-color: rgb(0, 0, 67);
     color: rgb(233, 173, 8);
     margin-top: 5rem;
-    margin-bottom: 15rem; /* Add more space at the bottom for scrolling */
+    border-bottom: 1px solid rgb(233, 173, 8); /* Add border to separate sections */
     order: -1;
 }
 
@@ -80,9 +79,9 @@ p {
     background-color: rgb(0, 0, 67);
     color: rgb(233, 173, 8);
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap2T */
-    margin-bottom: 15rem;
     order: 1;
     text-align: center;
+    margin-left: 10%; /* Adjusted margin from the left edge */
 }
 
 /* Add similar adjustments for other sections */
@@ -91,62 +90,57 @@ p {
     background-color: rgb(143, 10, 36);
     color: #f7f6ee;
     margin-top: 5rem;
-    margin-bottom: 15rem; /* Add more space at the bottom for scrolling */
 }
 
 #Chap3 {
-    background-color:rgb(143, 10, 36);
+    background-color: rgb(143, 10, 36);
     color: #f7f6ee;
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap3T */
-    margin-bottom: 5rem;
     text-align: center;
-
+    margin-left: 10%; /* Adjusted margin from the left edge */
 }
 
 #Chap4T {
     background-color: rgb(111, 155, 111);
     color: #f7f6ee;
     margin-top: 5rem;
-    margin-bottom: 15rem; /* Add more space at the bottom for scrolling */
+    border-bottom: 1px solid #f7f6ee; /* Add border to separate sections */
 }
 
 #Chap4 {
     background-color: rgb(111, 155, 111);
     color: #f7f6ee;
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap4T */
-    margin-bottom: 5rem;
     text-align: center;
-
+    margin-left: 10%; /* Adjusted margin from the left edge */
 }
 
 #Chap5T {
     background-color: white;
     color: black;
     margin-top: 5rem;
-    margin-bottom: 15rem; /* Add more space at the bottom for scrolling */
+    border-bottom: 1px solid black; /* Add border to separate sections */
 }
 
 #Chap5 {
     background-color: white;
     color: black;
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap5T */
-    margin-bottom: 5rem;
     text-align: center;
-
+    margin-left: 10%; /* Adjusted margin from the left edge */
 }
 
 #Tnotes {
     background-color: white;
     color: black;
     margin-top: 5rem;
-    margin-bottom: 15rem; /* Add more space at the bottom for scrolling */
+    border-bottom: 1px solid black; /* Add border to separate sections */
 }
 
 #notes {
     background-color: white;
     color: black;
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Tnotes */
-    margin-bottom: 5rem;
     text-align: center;
-
+    margin-left: 10%; /* Adjusted margin from the left edge */
 }
