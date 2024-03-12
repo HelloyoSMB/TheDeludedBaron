@@ -91,3 +91,43 @@ p {
     margin-top: 5rem;
     padding-bottom: 5rem;
 }
+.Chap1T {
+    background-color: black;
+    color: white;
+    padding-top: 5rem;
+    margin-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.Chap2T {
+    background-color: navy;
+    color: gold;
+    padding-top: 5rem;
+    margin-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.Chap3T {
+    background-color: crimson;
+    color: cream;
+    padding-top: 5rem;
+    margin-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.Chap4T {
+    background-color: sagegreen;
+    color: cream;
+    padding-top: 5rem;
+    margin-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.Chap5T,
+.Tnotes {
+    background-color: white;
+    color: black;
+    padding-top: 5rem;
+    margin-top: 5rem;
+    padding-bottom: 5rem;
+}
