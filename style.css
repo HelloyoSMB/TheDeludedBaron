@@ -55,24 +55,32 @@ p {
     background-color: black;
     color: white;
     padding-top: 5rem;
+    margin-top: 5rem;
+    padding-bottom: 5rem;
 }
 
 .Chap2 {
     background-color: navy;
     color: gold;
     padding-top: 5rem;
+    margin-top: 5rem;
+    padding-bottom: 5rem;
 }
 
 .Chap3 {
     background-color: crimson;
     color: cream;
     padding-top: 5rem;
+    margin-top: 5rem;
+    padding-bottom: 5rem;
 }
 
 .Chap4 {
     background-color: sagegreen;
     color: cream;
     padding-top: 5rem;
+    margin-top: 5rem;
+    padding-bottom: 5rem;
 }
 
 .Chap5,
@@ -80,4 +88,6 @@ p {
     background-color: white;
     color: black;
     padding-top: 5rem;
+    margin-top: 5rem;
+    padding-bottom: 5rem;
 }
