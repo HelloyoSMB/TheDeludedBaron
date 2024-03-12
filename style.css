@@ -11,16 +11,6 @@ body {
     overflow-x: hidden;
 }
 
-section {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.5s, color 0.5s;
-    margin-top: 5rem; /* Add generous spacing between sections */
-}
-
 h1 {
     font-family: 'Helvetica Neue', sans-serif;
     font-weight: bold;
@@ -81,8 +71,8 @@ p {
 }
 
 #Chap2 {
-    background-color: navy;
-    color: gold;
+    background-color: rgb(0, 0, 67);
+    color: rgb(233, 173, 8);
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap2T */
     padding-bottom: 5rem;
     order: 1;
