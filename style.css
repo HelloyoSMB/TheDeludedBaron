@@ -53,63 +53,91 @@ p {
     padding-bottom: 5rem;
 }
 
-.Chap1 {
-    background-color: black;
-    color: white;
-    margin-top: 20rem; /* Adjusted margin-top */
-}
-
-.Chap2 {
-    background-color: navy;
-    color: gold;
-    margin-top: 15rem; /* Adjusted margin-top */
-}
-
-.Chap3 {
-    background-color: crimson;
-    color: #f7f6ee; /* Replaced cream with #f7f6ee */
-}
-
-.Chap4 {
-    background-color: sagegreen;
-    color: #f7f6ee; /* Replaced cream with #f7f6ee */
-}
-
-.Chap5,
-.notes {
-    background-color: white;
-    color: black;
-}
-
-/* Add specific styles for sections ending with "T" */
 .Chap1T {
     background-color: black;
     color: white;
-    margin-top: 20rem; /* Add generous spacing */
+    padding-top: 5rem;
+    margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap1 */
     padding-bottom: 15rem; /* Add more space at the bottom for scrolling */
+}
+
+.Chap1 {
+    background-color: black;
+    color: white;
+    margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap1T */
+    padding-bottom: 5rem;
 }
 
 .Chap2T {
     background-color: rgb(0, 0, 67);
     color: rgb(233, 173, 8);
+    padding-top: 5rem;
+    margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap2 */
     padding-bottom: 15rem; /* Add more space at the bottom for scrolling */
+}
+
+.Chap2 {
+    background-color: navy;
+    color: gold;
+    margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap2T */
+    padding-bottom: 5rem;
 }
 
 .Chap3T {
     background-color: rgb(143, 10, 36);
-    color: #f7f6ee; /* Replaced cream with #f7f6ee */
+    color: #f7f6ee;
+    padding-top: 5rem;
+    margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap3 */
     padding-bottom: 15rem; /* Add more space at the bottom for scrolling */
+}
+
+.Chap3 {
+    background-color: crimson;
+    color: #f7f6ee;
+    margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap3T */
+    padding-bottom: 5rem;
 }
 
 .Chap4T {
     background-color: rgb(111, 155, 111);
-    color: #f7f6ee; /* Replaced cream with #f7f6ee */
+    color: #f7f6ee;
+    padding-top: 5rem;
+    margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap4 */
     padding-bottom: 15rem; /* Add more space at the bottom for scrolling */
 }
 
-.Chap5T,
+.Chap4 {
+    background-color: sagegreen;
+    color: #f7f6ee;
+    margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap4T */
+    padding-bottom: 5rem;
+}
+
+.Chap5T {
+    background-color: white;
+    color: black;
+    padding-top: 5rem;
+    margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap5 */
+    padding-bottom: 15rem; /* Add more space at the bottom for scrolling */
+}
+
+.Chap5 {
+    background-color: white;
+    color: black;
+    margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap5T */
+    padding-bottom: 5rem;
+}
+
 .Tnotes {
     background-color: white;
     color: black;
+    padding-top: 5rem;
+    margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap5 */
     padding-bottom: 15rem; /* Add more space at the bottom for scrolling */
+
+.notes {
+    background-color: white;
+    color: black;
+    margin-top: 5rem; /* Adjusted margin to prevent overlap with Tnotes */
+    padding-bottom: 5rem;
 }
