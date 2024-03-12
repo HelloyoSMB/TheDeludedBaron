@@ -15,6 +15,13 @@ window.addEventListener('scroll', function() {
             section.style.backgroundColor = newColor;
         }
     });
+
+    // Auto-scroll functionality
+    let windowHeight = window.innerHeight;
+    let lastSectionOffset = sections[sections.length - 1].offsetTop;
+    if (scrollTop + windowHeight >= lastSectionOffset) {
+        scrollToNextSection();
+    }
 });
 
 function interpolateColor(startColor, endColor, percentage) {
@@ -42,4 +49,23 @@ function rgbToHex(r, g, b) {
 function componentToHex(c) {
     let hex = c.toString(16);
     return hex.length == 1 ? '0' + hex : hex;
+}
+
+function scrollToNextSection() {
+    let sections = document.querySelectorAll('section');
+    let currentSectionIndex = 0;
+    let windowHeight = window.innerHeight;
+    sections.forEach((section, index) => {
+        if (window.scrollY + windowHeight >= section.offsetTop) {
+            currentSectionIndex = index;
+        }
+    });
+    if (currentSectionIndex < sections.length - 1) {
+        currentSectionIndex++;
+        let nextSectionOffset = sections[currentSectionIndex].offsetTop;
+        window.scrollTo({
+            top: nextSectionOffset,
+            behavior: 'smooth'
+        });
+    }
 }
