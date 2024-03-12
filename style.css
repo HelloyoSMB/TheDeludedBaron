@@ -18,6 +18,7 @@ section {
     justify-content: center;
     align-items: center;
     transition: background-color 0.5s, color 0.5s;
+    margin-top: 5rem; /* Add generous spacing between sections */
 }
 
 h1 {
@@ -51,83 +52,62 @@ p {
 .credits {
     padding-bottom: 5rem;
 }
+
 .Chap1 {
     background-color: black;
     color: white;
-    padding-top: 5rem;
-    margin-top: 20rem;
-    padding-bottom: 5rem;
 }
 
 .Chap2 {
     background-color: navy;
     color: gold;
-    padding-top: 5rem;
-    margin-top: 5rem;
-    padding-bottom: 5rem;
 }
 
 .Chap3 {
     background-color: crimson;
-    color: cream;
-    padding-top: 5rem;
-    margin-top: 5rem;
-    padding-bottom: 5rem;
+    color: #f7f6ee; /* Replaced cream with #f7f6ee */
 }
 
 .Chap4 {
     background-color: sagegreen;
-    color: cream;
-    padding-top: 5rem;
-    margin-top: 5rem;
-    padding-bottom: 5rem;
+    color: #f7f6ee; /* Replaced cream with #f7f6ee */
 }
 
 .Chap5,
 .notes {
     background-color: white;
     color: black;
-    padding-top: 5rem;
-    margin-top: 5rem;
-    padding-bottom: 5rem;
 }
+
+/* Add specific styles for sections ending with "T" */
 .Chap1T {
     background-color: black;
     color: white;
-    padding-top: 5rem;
-    margin-top: -5rem;
-    padding-bottom: 15rem;
+    margin-top: 20rem; /* Add generous spacing */
+    padding-bottom: 15rem; /* Add more space at the bottom for scrolling */
 }
 
 .Chap2T {
     background-color: rgb(0, 0, 67);
     color: rgb(233, 173, 8);
-    padding-top: 5rem;
-    margin-top: 5rem;
-    padding-bottom: 5rem;
+    padding-bottom: 15rem; /* Add more space at the bottom for scrolling */
 }
 
 .Chap3T {
     background-color: rgb(143, 10, 36);
-    color: #f7f6ee;
-    padding-top: 5rem;
-    margin-top: 5rem;
-    padding-bottom: 5rem;
+    color: #f7f6ee; /* Replaced cream with #f7f6ee */
+    padding-bottom: 15rem; /* Add more space at the bottom for scrolling */
 }
 
 .Chap4T {
-    background-color:rgb(111, 155, 111);
-    color: #f7f6ee;
-    padding-top: 5rem;
-    margin-top: 5rem;
-    padding-bottom: 5rem;
+    background-color: rgb(111, 155, 111);
+    color: #f7f6ee; /* Replaced cream with #f7f6ee */
+    padding-bottom: 15rem; /* Add more space at the bottom for scrolling */
 }
 
 .Chap5T,
 .Tnotes {
     background-color: white;
     color: black;
-    padding-top: 5rem;
-    margin-top: 5rem;
-    padding-bottom: 5rem;
+    padding-bottom: 15rem; /* Add more space at the bottom for scrolling */
 }
