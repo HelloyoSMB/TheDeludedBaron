@@ -66,7 +66,7 @@ p {
     padding-bottom: 15rem;
     order: 1;
     text-align: center;
-    margin-left: 5%; /* Adjusted margin from the left edge */
+ /* Adjusted margin from the left edge */
 }
 
 #Chap2T {
@@ -85,7 +85,7 @@ p {
     padding-bottom: 15rem;
     order: 1;
     text-align: center;
-    margin-left: 5%; /* Adjusted margin from the left edge */
+ /* Adjusted margin from the left edge */
 }
 
 /* Add similar adjustments for other sections */
@@ -105,6 +105,7 @@ p {
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap3T */
     padding-bottom: 5rem;
     text-align: center;
+
 }
 
 #Chap4T {
@@ -121,6 +122,7 @@ p {
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap4T */
     padding-bottom: 5rem;
     text-align: center;
+
 }
 
 #Chap5T {
@@ -137,6 +139,7 @@ p {
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap5T */
     padding-bottom: 5rem;
     text-align: center;
+
 }
 
 #Tnotes {
@@ -153,4 +156,5 @@ p {
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Tnotes */
     padding-bottom: 5rem;
     text-align: center;
+
 }
