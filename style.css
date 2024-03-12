@@ -56,16 +56,17 @@ p {
 #Chap1 {
     background-color: black;
     color: white;
-    margin-top: 25rem; /* Adjusted margin to prevent overlap with Chap1T */
+    margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap1T */
     padding-bottom: 15rem;
     order: 1;
+    text-align: center;
 }
 
 #Chap2T {
     background-color: rgb(0, 0, 67);
     color: rgb(233, 173, 8);
     padding-top: 15rem;
-    margin-top: 15rem; /* Adjusted margin to prevent overlap with Chap2 */
+    margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap2 */
     padding-bottom: 15rem; /* Add more space at the bottom for scrolling */
     order: -1;
 }
@@ -73,9 +74,10 @@ p {
 #Chap2 {
     background-color: rgb(0, 0, 67);
     color: rgb(233, 173, 8);
-    margin-top: 25rem; /* Adjusted margin to prevent overlap with Chap2T */
+    margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap2T */
     padding-bottom: 15rem;
     order: 1;
+    text-align: center;
 }
 
 /* Add similar adjustments for other sections */
@@ -94,6 +96,7 @@ p {
     color: #f7f6ee;
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap3T */
     padding-bottom: 5rem;
+    text-align: center;
 }
 
 #Chap4T {
@@ -109,6 +112,7 @@ p {
     color: #f7f6ee;
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap4T */
     padding-bottom: 5rem;
+    text-align: center;
 }
 
 #Chap5T {
@@ -124,6 +128,7 @@ p {
     color: black;
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Chap5T */
     padding-bottom: 5rem;
+    text-align: center;
 }
 
 #Tnotes {
@@ -139,4 +144,5 @@ p {
     color: black;
     margin-top: 5rem; /* Adjusted margin to prevent overlap with Tnotes */
     padding-bottom: 5rem;
+    text-align: center;
 }
