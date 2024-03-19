@@ -33,7 +33,8 @@ p {
     text-align: justify;
     font-family: 'Baskerville', serif;
     max-width: 80%;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
+    line-height: 3.8rem;
     margin-top: 9rem;
     margin-left: 5%;
 }
@@ -42,10 +43,12 @@ p {
     padding-top: 5rem;
     background-color: white;
     color: black;
+    margin-bottom: 5rem;
     padding-bottom: 5rem;
 }
 
 .credits {
+    margin-top: 10rem;
     padding-bottom: 5rem;
 }
 
@@ -62,14 +65,14 @@ p {
 #Chap1 {
     background-color: black;
     color: white;
-    margin-top: 5rem;
+    margin-top: -5rem;
     padding-top: 5rem; /* Adjusted margin to prevent overlap with Chap1T */
     padding-bottom: 15rem;
-    margin-bottom: 15rem;
+    margin-bottom: -5rem;
     order: 1;
     text-align: center;
-    padding-left: 9%;
-    margin-left: 9%; /* Adjusted margin from the left edge */
+    padding-left: 18%;
+    margin-left: -9%; /* Adjusted margin from the left edge */
 }
 
 #Chap2T {
@@ -84,14 +87,14 @@ p {
 #Chap2 {
     background-color: rgb(0, 0, 67);
     color: rgb(233, 173, 8);
-    margin-top: 5rem;
+    margin-top: -5rem;
     padding-top: 5rem; /* Adjusted margin to prevent overlap with Chap1T */
     padding-bottom: 15rem;
-    margin-bottom: 15rem;
+    margin-bottom: -5rem;
     order: 1;
     text-align: center;
-    padding-left: 9%;
-    margin-left: 9%; /* Adjusted margin from the left edge */
+    padding-left: 18%;
+    margin-left: -9%; /* Adjusted margin from the left edge */
 }
 
 /* Add similar adjustments for other sections */
@@ -108,14 +111,14 @@ p {
 #Chap3 {
     background-color:rgb(143, 10, 36);
     color: #f7f6ee;
-    margin-top: 5rem;
+    margin-top: -5rem;
     padding-top: 5rem; /* Adjusted margin to prevent overlap with Chap1T */
     padding-bottom: 15rem;
-    margin-bottom: 15rem;
+    margin-bottom: -5rem;
     order: 1;
     text-align: center;
-    padding-left: 9%;
-    margin-left: 9%;
+    padding-left: 18%;
+    margin-left: -9%; /* Adjusted margin from the left edge */
 }
 
 #Chap4T {
@@ -129,14 +132,14 @@ p {
 #Chap4 {
     background-color: rgb(111, 155, 111);
     color: #f7f6ee;
-    margin-top: 5rem;
+    margin-top: -5rem;
     padding-top: 5rem; /* Adjusted margin to prevent overlap with Chap1T */
     padding-bottom: 15rem;
-    margin-bottom: 15rem;
+    margin-bottom: -5rem;
     order: 1;
     text-align: center;
-    padding-left: 9%;
-    margin-left: 9%;
+    padding-left: 18%;
+    margin-left: -9%; /* Adjusted margin from the left edge */
 }
 
 #Chap5T {
@@ -150,14 +153,14 @@ p {
 #Chap5 {
     background-color: white;
     color: black;
-    margin-top: 5rem;
+    margin-top: -5rem;
     padding-top: 5rem; /* Adjusted margin to prevent overlap with Chap1T */
     padding-bottom: 15rem;
-    margin-bottom: 15rem;
+    margin-bottom: -5rem;
     order: 1;
     text-align: center;
-    padding-left: 9%;
-    margin-left: 9%;
+    padding-left: 18%;
+    margin-left: -9%; /* Adjusted margin from the left edge */
 }
 
 #Tnotes {
@@ -171,16 +174,15 @@ p {
 #notes {
     background-color: white;
     color: black;
-    margin-top: 5rem;
+    margin-top: -5rem;
     padding-top: 5rem; /* Adjusted margin to prevent overlap with Chap1T */
     padding-bottom: 15rem;
-    margin-bottom: 15rem;
+    margin-bottom: -5rem;
     order: 1;
     text-align: center;
-    padding-left: 9%;
-    margin-left: 9%;
+    padding-left: 18%;
+    margin-left: -9%; /* Adjusted margin from the left edge */
 }
-
 
 /* at this point, I need to figure out how to remove that pesky white padding around the left and bottom parts of each section with the section's corresponding colour.
 /* let's get the js working too.

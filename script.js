@@ -1,71 +1,44 @@
-window.addEventListener('scroll', function() {
-    let scrollTop = window.scrollY;
-    let sections = document.querySelectorAll('section');
+window.onload = function() {
+    // Play audio file as soon as the page loads
+    var audio = new Audio('path_to_your_audio_file.mp3');
+    audio.play();
 
-    sections.forEach((section, index) => {
-        let offset = section.offsetTop;
-        let height = section.offsetHeight;
+    // Get the arrow element
+    var arrow = document.getElementById('scrollArrow');
 
-        let startColor = section.getAttribute('data-start-color');
-        let endColor = section.getAttribute('data-end-color');
+    // Get the position of the first chapter
+    var chap1Position = document.getElementById('Chap1').offsetTop;
 
-        if (scrollTop >= offset && scrollTop < offset + height) {
-            let percentage = (scrollTop - offset) / height;
-            let newColor = interpolateColor(startColor, endColor, percentage);
-            section.style.backgroundColor = newColor;
+    // Function to handle scrolling
+    function handleScroll() {
+        // Get the current scroll position
+        var scrollPosition = window.scrollY || window.pageYOffset;
+
+        // Calculate the opacity for the gradient based on scroll position
+        var opacity = scrollPosition / chap1Position;
+
+        // Apply gradient transition to the body background
+        document.body.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, ' + opacity + ') 100%)';
+
+        // Hide or show the arrow based on scroll position
+        arrow.style.opacity = 1 - opacity;
+
+        // Autoscroll to the first chapter when reaching its position
+        if (scrollPosition >= chap1Position) {
+            clearInterval(scrollInterval);
+            return;
         }
-    });
-
-    // Auto-scroll functionality
-    let windowHeight = window.innerHeight;
-    let lastSectionOffset = sections[sections.length - 1].offsetTop;
-    if (scrollTop + windowHeight >= lastSectionOffset) {
-        scrollToNextSection();
     }
-});
 
-function interpolateColor(startColor, endColor, percentage) {
-    let start = hexToRgb(startColor);
-    let end = hexToRgb(endColor);
+    // Scroll event listener
+    window.addEventListener('scroll', handleScroll);
 
-    let r = Math.floor(start.r + (end.r - start.r) * percentage);
-    let g = Math.floor(start.g + (end.g - start.g) * percentage);
-    let b = Math.floor(start.b + (end.b - start.b) * percentage);
+    // Initial call to handleScroll
+    handleScroll();
 
-    return rgbToHex(r, g, b);
-}
-
-function hexToRgb(hex) {
-    let r = parseInt(hex.substring(0, 2), 16);
-    let g = parseInt(hex.substring(2, 4), 16);
-    let b = parseInt(hex.substring(4, 6), 16);
-    return { r, g, b };
-}
-
-function rgbToHex(r, g, b) {
-    return '#' + componentToHex(r) + componentToHex(g) + componentToHex(b);
-}
-
-function componentToHex(c) {
-    let hex = c.toString(16);
-    return hex.length == 1 ? '0' + hex : hex;
-}
-
-function scrollToNextSection() {
-    let sections = document.querySelectorAll('section');
-    let currentSectionIndex = 0;
-    let windowHeight = window.innerHeight;
-    sections.forEach((section, index) => {
-        if (window.scrollY + windowHeight >= section.offsetTop) {
-            currentSectionIndex = index;
-        }
-    });
-    if (currentSectionIndex < sections.length - 1) {
-        currentSectionIndex++;
-        let nextSectionOffset = sections[currentSectionIndex].offsetTop;
-        window.scrollTo({
-            top: nextSectionOffset,
-            behavior: 'smooth'
-        });
-    }
-}
+    // Autoscroll to the first chapter after a delay
+    var scrollInterval = setInterval(function() {
+        window.scrollBy(0, 10); // Adjust the scrolling speed as needed
+        handleScroll();
+    }, 50); // Adjust the interval as needed
+};

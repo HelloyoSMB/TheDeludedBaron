@@ -24,6 +24,54 @@
   <link id="font1" href="./Users/santiagobelanger/Downloads/HelveticaNeue.ttc" />
 
   <link id="font2" href="/Users/santiagobelanger/Downloads/Baskerville.ttc" />
+
+  <!-- Add your JavaScript code -->
+  <script>
+    window.onload = function() {
+      // Play audio file as soon as the page loads
+      var audio = new Audio('/Users/santiagobelanger/Downloads/nbfap-9znqj.mp3');
+      audio.play();
+
+      // Get the arrow element
+      var arrow = document.getElementById('scrollArrow');
+
+      // Get the position of the first chapter
+      var chap1Position = document.getElementById('Chap1').offsetTop;
+
+      // Function to handle scrolling
+      function handleScroll() {
+        // Get the current scroll position
+        var scrollPosition = window.scrollY || window.pageYOffset;
+
+        // Calculate the opacity for the gradient based on scroll position
+        var opacity = scrollPosition / chap1Position;
+
+        // Apply gradient transition to the body background
+        document.body.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, ' + opacity + ') 100%)';
+
+        // Hide or show the arrow based on scroll position
+        arrow.style.opacity = 1 - opacity;
+
+        // Autoscroll to the first chapter when reaching its position
+        if (scrollPosition >= chap1Position) {
+          clearInterval(scrollInterval);
+          return;
+        }
+      }
+
+      // Scroll event listener
+      window.addEventListener('scroll', handleScroll);
+
+      // Initial call to handleScroll
+      handleScroll();
+
+      // Autoscroll to the first chapter after a delay
+      var scrollInterval = setInterval(function() {
+        window.scrollBy(0, 10); // Adjust the scrolling speed as needed
+        handleScroll();
+      }, 50); // Adjust the interval as needed
+    };
+  </script>
 </head>
     <body>
     <link rel="narration" href="" />
@@ -81,7 +129,6 @@
                     I climbed her stairs to the upper rooms. A corridor ran above the court de loggie, elevated enough to give the foyer space ample headroom and height. I looked at the window, recessed deeply into the plastered wall to have a nice oak bench on it. I saw a British Racing Green Range Rover summon onto the gravel. Muddy, dusty, yet luxurious.
                     Out came the butler, in his Wellington boots; muddy. The two Jack Russell Terriers; muddy. The interior was blonde, with dials of ceramic, the top of the line. I knew I didn’t want to interact with the butler, as he came back from the hunt, with mud, tired dogs, and an attitude. I hid to the chambers, with navy walls, crimson carpeting, and a bed of poles. I knew, immediately, this was the house for me.
                     I hid from the staff; I didn’t want to see them, they’re lesser beings than me. I am the Baron Swallow, aren’t I? Husband to the Baroness Swallow, no? I sure think so.
-                
                     Ah, the Baroness. The most beautiful woman I have ever met. Chestnut hair that flowed to her shoulders. Freckles kissed by the hidden sun, who shied from her presence. Adorable nose, and a gorgeous voice, not a midlands accent like many locals have in Swallowlands. She is who I love, and long to be with, and whom I’m with.
                     We met long ago—In Cambridge. I saw her from afar, her aura was oddly pleasant, different from the other women and men. I found her special, and I passed her with a look of impression. It occurred every week, until I stopped her one day, to ask her for tea at the mess hall. She accepted, and we dated for the rest of the year.
                     She studied Political Science, as she was the heiress to the old Baron’s fortune and was to be the landowner of the Estate. I knew I wanted to be with her, and we loved each other.
@@ -295,6 +342,5 @@
                 We all hope you enjoy the story, the narration, the interactive images, and the immersion that this will provide you. Thank you for taking the time to experience the story of The Deluded Baron.
                 </p>
         </section>
-        <script src="script.js"></script>
     </body>
 </html>
