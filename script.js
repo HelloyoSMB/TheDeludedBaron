@@ -1,64 +1,99 @@
 <script>
     window.onload = function() {
-    // Play audio file as soon as the page loads
-    var audio = new Audio('./Users/santiagobelanger/Downloads/nbfap-9znqj.mp3');
-    audio.play();
+        // Get the elements for each section
+        var titleSection = document.getElementById('title');
+        var chap2Section = document.getElementById('Chap2T');
+        var chap3Section = document.getElementById('Chap3T');
+        var chap4Section = document.getElementById('Chap4T');
+        var chap5Section = document.getElementById('Chap5T');
 
-    // Get the arrow element
-    var arrow = document.getElementById('scrollArrow');
+        // Define the corresponding audio files for each section
+        var audioFiles = {
+            'title': './Users/santiagobelanger/Downloads/TheDeludedBaronMP3s/Fallacia-Prterita.mp3',
+            'Chap2T': './Users/santiagobelanger/Downloads/TheDeludedBaronMP3s/Contra Passeres.mp3',
+            'Chap3T': './Users/santiagobelanger/Downloads/TheDeludedBaronMP3s/Veritas.mp3',
+            'Chap4T': './Users/santiagobelanger/Downloads/TheDeludedBaronMP3s/Exeunt.mp3',
+            'Chap5T': './Users/santiagobelanger/Downloads/TheDeludedBaronMP3s/Epilogue.mp3'
+        };
 
-    // Get the position of the first chapter
-    var chap1Position = document.getElementById('Chap1').offsetTop;
+        // Variable to hold the current audio object
+        var currentAudio = null;
 
-    // Flag to indicate if scrolling should be activated
-    var scrollingEnabled = false;
+        // Function to handle playing audio for each section
+        function handleAudio() {
+            // Get the current scroll position
+            var scrollPosition = window.scrollY || window.pageYOffset;
 
-    // Function to handle scrolling
-    function handleScroll() {
-    // Get the current scroll position
-    var scrollPosition = window.scrollY || window.pageYOffset;
+            // Function to check if the given section is in view
+            function isInView(section) {
+                var rect = section.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+                );
+            }
 
-    // Calculate the opacity for the gradient based on scroll position
-    var opacity = scrollPosition / chap1Position;
+            // Check which section is in view and play the corresponding audio
+            if (isInView(titleSection)) {
+                playAudio(audioFiles['title']);
+            } else if (isInView(chap2Section)) {
+                playAudio(audioFiles['Chap2T']);
+            } else if (isInView(chap3Section)) {
+                playAudio(audioFiles['Chap3T']);
+            } else if (isInView(chap4Section)) {
+                playAudio(audioFiles['Chap4T']);
+            } else if (isInView(chap5Section)) {
+                playAudio(audioFiles['Chap5T']);
+            } else {
+                // No section in view, pause the current audio
+                pauseAudio();
+            }
+        }
 
-    // Apply gradient transition to the body background
-    document.body.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, ' + opacity + ') 100%)';
+        // Function to play audio
+        function playAudio(audioFile) {
+            if (currentAudio) {
+                currentAudio.pause();
+            }
+            currentAudio = new Audio(audioFile);
+            currentAudio.play();
+        }
 
-    // Hide or show the arrow based on scroll position
-    arrow.style.opacity = 0.5 - opacity;
+        // Function to pause audio
+        function pauseAudio() {
+            if (currentAudio) {
+                currentAudio.pause();
+            }
+        }
 
+        // Scroll event listener
+        window.addEventListener('scroll', function() {
+            handleAudio();
+        });
 
-    }
-    // Scroll event listener
-    window.addEventListener('scroll', handleScroll);
+        // Initial call to handleAudio
+        handleAudio();
 
-    // Initial call to handleScroll
-    handleScroll();
+        // Pause audio when scrolling stops
+        var isScrolling;
+        window.addEventListener('scroll', function(event) {
+            window.clearTimeout(isScrolling);
+            isScrolling = setTimeout(function() {
+                pauseAudio();
+            }, 66); // Adjust this value as needed
+        }, false);
 
-    // Hide the arrow initially
-    arrow.style.display = 'none';
-
-    // Display the arrow after a delay
-    setTimeout(function() {
-        arrow.style.display = 'block';
-    }, 1); // Adjust the delay time as needed
-
-    // Pause button click event listener
-    pauseButton.addEventListener('click', function() {
-    isPaused = !isPaused;
-    if (isPaused) {
-        // Pause auto scroll and audio
-        pauseButton.textContent = 'Play';
-        audio.pause();
-    } else {
-        // Resume auto scroll and audio
-        pauseButton.textContent = 'Pause';
-        audio.play();
-        // Resume scrolling from the current position
-        handleScroll(window.scrollY || window.pageYOffset);
-    }
-    });
-    // Initial call to handleScroll
-    handleScroll(0);
+        // Rewind audio when scrolling up
+        var previousScrollPosition = window.scrollY || window.pageYOffset;
+        window.addEventListener('scroll', function() {
+            var currentScrollPosition = window.scrollY || window.pageYOffset;
+            if (currentScrollPosition < previousScrollPosition) {
+                // Scroll up detected, rewind audio by 10 seconds
+                if (currentAudio) {
+                    currentAudio.currentTime -= 10;
+                }
+            }
+            previousScrollPosition = currentScrollPosition;
+        });
     };
 </script>
