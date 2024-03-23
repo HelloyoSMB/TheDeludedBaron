@@ -2,44 +2,47 @@
 <!DOCTYPE html>
 <html lang="en-gb">
 
-<head>
-  <!-- Set the page title -->
-  <title>The Deluded Baron.</title>
+    <head>
+    <!-- Set the page title -->
+    <title>The Deluded Baron.</title>
 
-  <!-- Set the charset we're using to UTF-8 -->
-  <meta charset="utf-8" />
+    <!-- Set the charset we're using to UTF-8 -->
+    <meta charset="utf-8" />
 
-  <!-- Set the screens default zoom / scale to 1 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Set the screens default zoom / scale to 1 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Specifies the document mode for Internet Explorer -->
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Specifies the document mode for Internet Explorer -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <!-- Set some basic CSS for the header and body -->
-  <link rel="stylesheet" href="./style.css" />
+    <!-- Set some basic CSS for the header and body -->
+    <link rel="stylesheet" href="./style.css" />
 
-  <!-- Set the Favicon  -->
-<!--  <link rel="icon" href="./images/favicon/window.svg" type="image/svg+xml" /> -->
+    <!-- Set the Favicon  -->
+    <!--  <link rel="icon" href="./images/favicon/window.svg" type="image/svg+xml" /> -->
 
-  <link id="font1" href="./Users/santiagobelanger/Downloads/HelveticaNeue.ttc" />
+    <link id="font1" href="./Users/santiagobelanger/Downloads/HelveticaNeue.ttc" />
 
-  <link id="font2" href="/Users/santiagobelanger/Downloads/Baskerville.ttc" />
+    <link id="font2" href="/Users/santiagobelanger/Downloads/Baskerville.ttc" />
 
-  <!-- Add your JavaScript code -->
-  <script>
-    window.onload = function() {
-      // Play audio file as soon as the page loads
-      var audio = new Audio('/Users/santiagobelanger/Downloads/nbfap-9znqj.mp3');
-      audio.play();
+    <!-- Add your JavaScript code -->
+    <script>
+        window.onload = function() {
+        // Play audio file as soon as the page loads
+        var audio = new Audio('./Users/santiagobelanger/Downloads/nbfap-9znqj.mp3');
+        audio.play();
 
-      // Get the arrow element
-      var arrow = document.getElementById('scrollArrow');
+        // Get the arrow element
+    var arrow = document.getElementById('scrollArrow');
 
-      // Get the position of the first chapter
-      var chap1Position = document.getElementById('Chap1').offsetTop;
+    // Get the position of the first chapter
+    var chap1Position = document.getElementById('Chap1').offsetTop;
 
-      // Function to handle scrolling
-      function handleScroll() {
+    // Flag to indicate if scrolling should be activated
+    var scrollingEnabled = false;
+
+    // Function to handle scrolling
+    function handleScroll() {
         // Get the current scroll position
         var scrollPosition = window.scrollY || window.pageYOffset;
 
@@ -50,50 +53,77 @@
         document.body.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, ' + opacity + ') 100%)';
 
         // Hide or show the arrow based on scroll position
-        arrow.style.opacity = 1 - opacity;
+        arrow.style.opacity = 0.5 - opacity;
 
-        // Autoscroll to the first chapter when reaching its position
-        if (scrollPosition >= chap1Position) {
-          clearInterval(scrollInterval);
-          return;
+        // If scrolling is enabled and the current scroll position is below Chap1 position
+        if (scrollingEnabled && scrollPosition > chap1Position) {
+            // Slow down the scroll by adjusting scroll position
+            window.scrollTo(0, scrollPosition + 1); // Adjust the scrolling speed by changing the increment value
         }
-      }
 
-      // Scroll event listener
-      window.addEventListener('scroll', handleScroll);
+        // Activate scrolling when it hits Chap1 position
+        if (scrollPosition = chap1Position) {
+            scrollingEnabled = true;
+        }
+    }
+        // Scroll event listener
+        window.addEventListener('scroll', handleScroll);
 
-      // Initial call to handleScroll
-      handleScroll();
-
-      // Autoscroll to the first chapter after a delay
-      var scrollInterval = setInterval(function() {
-        window.scrollBy(0, 10); // Adjust the scrolling speed as needed
+        // Initial call to handleScroll
         handleScroll();
-      }, 50); // Adjust the interval as needed
+
+        // Hide the arrow initially
+        arrow.style.display = 'none';
+
+        // Display the arrow after a delay
+        setTimeout(function() {
+            arrow.style.display = 'block';
+        }, 1); // Adjust the delay time as needed
+
+    // Pause button click event listener
+    pauseButton.addEventListener('click', function() {
+        isPaused = !isPaused;
+        if (isPaused) {
+            // Pause auto scroll and audio
+            pauseButton.textContent = 'Play';
+            audio.pause();
+        } else {
+            // Resume auto scroll and audio
+            pauseButton.textContent = 'Pause';
+            audio.play();
+            // Resume scrolling from the current position
+            handleScroll(window.scrollY || window.pageYOffset);
+        }
+    });
+    // Initial call to handleScroll
+    handleScroll(0);
     };
-  </script>
-</head>
+    </script>
+    </head>
     <body>
-    <link rel="narration" href="" />
-        <section id="title">
-            <h1>The Deluded Baron.</h1>
-        </section>
-        <section id="credits">
-            <h2>Written by Malaki Moxam, Santiago Bélanger.
-                <br/>
-                Narrated by Santiago Bélanger.
-                <br/>
-                Illustrated by Esosa Owieadolor.
-                <br/>
-            </h2>
-        </section>
-        <br/>
-        <section id="Chap1T">
-            <h1>Fallacia Præterita.</h1>
-        </section>
+        <link rel="narration" href="./Users/santiagobelanger/Downloads/nbfap-9znqj.mp3" />
+            <section id="title">
+                <h1>The Deluded Baron.</h1>
+            </section>
+            <section id="credits">
+                <h2>Written by Malaki Moxam, Santiago Bélanger.
+                    <br/>
+                    Narrated by Santiago Bélanger.
+                    <br/>
+                    Illustrated by Esosa Owieadolor.
+                    <br/>
+                </h2>
+                <div id="scrollArrow">
+                        Please scroll down...
+                </div>
+            </section>
             <br/>
-            <section id="Chap1">
-            <p>
+            <section id="Chap1T">
+                <h1>Fallacia Præterita.</h1>
+            </section>
+                <br/>
+                <section id="Chap1">
+                <p>
 
 
 
@@ -108,239 +138,239 @@
 
 
 
-                    As I walk the fogged and gravelled roads of Swallow, I stumble across a junction.
-                A place for me to make a decision. Who am I? What am I? Am I the importance I so assume to be? I am that person. I am the clear heir to the Swallow Estate. My crossroads lead to my pavement—my walkway to the aristocracy. To my own home, of course.
-                    I walked alongside the reeds of parsnip, humid with dewed verdant grass, and felt a wet sting on the rear of my calf. I have felt the masochistic cold burn rub into my dermis, as I felt the stone was near. My fortune was near. My presumption is near. This is my house—my estate, in which no one will or can stop me.
-                    I increase my rhythm. A march to 120. A beat of determination, a cadence of certainty. I was home. A sandstone-walled manor, with a pebbled court, greeted me and invited me inside. The windows were tall and ornamented. Bushes were trimmed to equilibrium, balance, and perfect flatness as I walked home.
-                This is my home. I do not need to knock.
-                This is my home. I do not need to use a key.
-                This is my home. I may pick at any lock I so desire.
-                    I stumbled onto the portal. Walnut doors—6 inches in thickness. The doors were heavy, resistant to my homecoming. They were afraid of me, and what I was going to see in my own home. I re-assured the door and told it to not fret—I am the owner and always have been. It let me in, and I tripped into the diced marble entrée. The large oak stairwell greeted me as I summoned onto the vestibule, and I closed the door behind me. The walls were green of sage, with wainscoting to my hips. The detail was ornamented—neoclassical. Aristocratic.
-                    I was aristocratic. This is my home.
-                I began to explore clockwise, so I walked to the left. I walked through the corridor of a many-windowed passage. Portraits of the former Barons who resided lined the alley, with gold encasements, and aurous plaques. Their wigs were large, their cloaks were of scarlet—blood.
-                    I dreamt of a bloody cloak. One of royalty. One, which I deserved. My shoulders longed for the hug of bearskin, fur, and scarlet. My hair dreamt of a barrister’s wig. 
-                It will come. It will come.
-                I walked and promenaded about the mazes of rooms and spaces that the estate had housed. Rooms of elegance, grandeur, bold colours, ornaments, and fineness. Her walls were of wood and plaster, hiding the sandstone that lurked outside. The floors transitioned from the diced checkers to a herringbone parquet of solid oak. I decided to remove my oxfords and hose at the transition point and stepped onto the soft, luke-cold, fragrant floor.
-                I arrived at the study, closed with glass doors, twinning an entrance into more wood. The doors clicked close behind me, and was immediately startled by a bearhead. His mouth gaped open, and his eyes at my feet. I quickly retrieved my oxfords, in case he were to bite my digits. I was afraid of animals, and hurting them, nevertheless. Yet with homo sapiens, things were different. I envy, detest, love, hate, and find myself to be a superior being, deserving of all. I am quite so. Unlike the pedestrians who reside in Swallowlands, I speak with poise. I march with dignity. I am well-appointed, and am clean, as the upper are too. I am deserving to be lord; I am the Baron, am I not?
-                    I stumble to the libraries, holding then archives that so belong to this Estate. Near the desk, lay a Mont Blanc fountain pen, with “The Baroness Swallow” engraved onto it. It had shined onto my aqueous blue eyes, and back to the glass of the archive case adjacent. Awards, degrees, relics of foreign lands, gifts, and small frames lined the shelves opposite the books and journals. The window shone brightly onto the bear’s fur, and a fireplace of stone housed birch for burning. I decided to exit the study and move on to the next hall.
-                    The next hallway led to the parlour, where a large 85-inch telly, whom had laid over the gargantuan and cavernous fireplace. In the Georgian era, this was used as a place to boil and cook foods that required a large pot, like Rabbit Stew. The rug was a Persian Oriental masterpiece, malheureusement, covering the gorgeous herringbone parquet that lay below it. The walls were of crimson and dark oak, and the chesterfield that I sat on was of a muddy semi-aniline leather, most likely from Italy. Seats of olive velvet flanked the large loveseat, and a table of solid fir was placed in the centre, with books of art from London on it.
-                    I walked to the kitchen, fragrant with clove, orange, and winter spice. A wee bit too late, as the waters of march, brought printemps to the air, the promise of summer, the promise of life, the promise of love for my heart (I so presume). The aroma was overwhelming for my sensitive spring nostril, as they began to itch. My sting from the reeds was reminded, leading me to itch again on my left calf. I walked over to the dining room, and admired the solid oak table, with a varnish that glistened to mirror the nuaged sky above. I traversed to the large stairwell, and my feet were iced by the frigid stone that stood below my posture. Her warning of unsure trespass was to cool my feet; she (the house) wanted me out. 
-                Even with a wealthy masque, a plebian, charlatan, or degenerate may not fully hide their lower visage. Insignificant is their beauty. Their skin. Their genealogies. Their children. Their story. They are still, truly, losers. Deluded.
-                    I climbed her stairs to the upper rooms. A corridor ran above the court de loggie, elevated enough to give the foyer space ample headroom and height. I looked at the window, recessed deeply into the plastered wall to have a nice oak bench on it. I saw a British Racing Green Range Rover summon onto the gravel. Muddy, dusty, yet luxurious.
-                    Out came the butler, in his Wellington boots; muddy. The two Jack Russell Terriers; muddy. The interior was blonde, with dials of ceramic, the top of the line. I knew I didn’t want to interact with the butler, as he came back from the hunt, with mud, tired dogs, and an attitude. I hid to the chambers, with navy walls, crimson carpeting, and a bed of poles. I knew, immediately, this was the house for me.
-                    I hid from the staff; I didn’t want to see them, they’re lesser beings than me. I am the Baron Swallow, aren’t I? Husband to the Baroness Swallow, no? I sure think so.
-                    Ah, the Baroness. The most beautiful woman I have ever met. Chestnut hair that flowed to her shoulders. Freckles kissed by the hidden sun, who shied from her presence. Adorable nose, and a gorgeous voice, not a midlands accent like many locals have in Swallowlands. She is who I love, and long to be with, and whom I’m with.
-                    We met long ago—In Cambridge. I saw her from afar, her aura was oddly pleasant, different from the other women and men. I found her special, and I passed her with a look of impression. It occurred every week, until I stopped her one day, to ask her for tea at the mess hall. She accepted, and we dated for the rest of the year.
-                    She studied Political Science, as she was the heiress to the old Baron’s fortune and was to be the landowner of the Estate. I knew I wanted to be with her, and we loved each other.
-                    There was a time when I started understanding her class schedules, and when she’d pass near my classes. I timed my exit from the lectures perfectly, so I can catch her, and we could fuck in the washrooms. We’d caress and kiss so passionately, it had felt incredible; aweing. I wanted this feeling forever.
-                    She felt, eventually, that I was stalking her, and felt uncomfortable, especially when I confronted her to make out with me after the night classes. She was tired and kept telling me to stop. I found it extremely erotic, yet apparently, to her, she called it sexual assault.
-                I was confused, sad, and heartbroken. She stopped talking to me, as she thought I was a wanker, a creep, and a stalker. I think she was overreacting like women often do. We’re still together, although we don’t talk. I only stay at the estate when she’s in London during question periods at the House of Lord’s chamber. 
-                    I love having the house to myself. It’s clean, and relaxing, and I get to walk in where I please. I go where I want when I want, and I stay away from the plebian servants. 
-                    Ah, the baroness. I love her so much. Her house is as beautiful as she is, why must we be separate all the time? I want her, and I presume vice-versa.
-                    When will I see her next? When will she be summoned amongst more Range Rovers? Or perchance an Aston Martin? That would be elegant and posh. Oh, what a wonderful dream of mine.
-                    I heard the cook leave for the evening, as he concluded his session of meal prep. The rubbish was emptied into the main bin by the coach house and stables. I ordered Fish & Chips from the Rooster, Cock, Chick, and Hen, as they have my favourite batter. I enjoyed it by the large fire, with feet on the leather ottoman. I enjoyed some news from the BBC—the usual stuff, politics, children dying, a white woman in a Hijab interviewing innocent civilians residing in Syria, the late Queen and her whereabouts, and finally, the section on The House of Lords. Oh! There she was; gorgeous, beautiful, a striking woman, fit to be my bride.
-                    I was planning a proposal for her, a gorgeous woman, she deserves one. I think I will follow through with it, as she is the most wonderful woman in the world. I have the most perfect plan to execute it.
-                
-                    The chambers upstairs had an iMac, which I use to read news, watch pornography, and check Facebook. That was my morning routine. I’m always trying to find out her whereabouts, where she is, and hoping she is not cheating on me. I still communicate with her…as friends (she likes to say), and I hear about her life occasionally. I checked her Instagram story, and there I find, her smooching the cheeks of a man, next to a vegan café, eating artisanal toast and sipping cappuccinos. After 10 o’clock? The audacity. Two sins—she will have an awful flatulence today, that’s why the Italians choose to enjoy cappuccinos in the morning, and not the evening, so they may digest the lactose when their gut can.
-                
-                I texted her:
-                
-                    “Dearest Baroness,
-                    Why must you be with another man, when you were always with me in my heart?	Your betrayal to my heart is baffling; grotesque. You dare to betray your soulmate
-                    For another man? He must be the Baron. Why? Why can’t I? I am the royal one?
-                    I am too related to your family, from very far! I may make your bloodline pure!
-                    I shall be for you, not this idiot from the street, in which you’ve just met.
-                    Come back home. I would like a wee chat with you.
-                    I look forward to discussing this matter with you.
-                    I have the honour to be, madam, your obedient servant.
+                        As I walk the fogged and gravelled roads of Swallow, I stumble across a junction.
+                    A place for me to make a decision. Who am I? What am I? Am I the importance I so assume to be? I am that person. I am the clear heir to the Swallow Estate. My crossroads lead to my pavement—my walkway to the aristocracy. To my own home, of course.
+                        I walked alongside the reeds of parsnip, humid with dewed verdant grass, and felt a wet sting on the rear of my calf. I have felt the masochistic cold burn rub into my dermis, as I felt the stone was near. My fortune was near. My presumption is near. This is my house—my estate, in which no one will or can stop me.
+                        I increase my rhythm. A march to 120. A beat of determination, a cadence of certainty. I was home. A sandstone-walled manor, with a pebbled court, greeted me and invited me inside. The windows were tall and ornamented. Bushes were trimmed to equilibrium, balance, and perfect flatness as I walked home.
+                    This is my home. I do not need to knock.
+                    This is my home. I do not need to use a key.
+                    This is my home. I may pick at any lock I so desire.
+                        I stumbled onto the portal. Walnut doors—6 inches in thickness. The doors were heavy, resistant to my homecoming. They were afraid of me, and what I was going to see in my own home. I re-assured the door and told it to not fret—I am the owner and always have been. It let me in, and I tripped into the diced marble entrée. The large oak stairwell greeted me as I summoned onto the vestibule, and I closed the door behind me. The walls were green of sage, with wainscoting to my hips. The detail was ornamented—neoclassical. Aristocratic.
+                        I was aristocratic. This is my home.
+                    I began to explore clockwise, so I walked to the left. I walked through the corridor of a many-windowed passage. Portraits of the former Barons who resided lined the alley, with gold encasements, and aurous plaques. Their wigs were large, their cloaks were of scarlet—blood.
+                        I dreamt of a bloody cloak. One of royalty. One, which I deserved. My shoulders longed for the hug of bearskin, fur, and scarlet. My hair dreamt of a barrister’s wig. 
+                    It will come. It will come.
+                    I walked and promenaded about the mazes of rooms and spaces that the estate had housed. Rooms of elegance, grandeur, bold colours, ornaments, and fineness. Her walls were of wood and plaster, hiding the sandstone that lurked outside. The floors transitioned from the diced checkers to a herringbone parquet of solid oak. I decided to remove my oxfords and hose at the transition point and stepped onto the soft, luke-cold, fragrant floor.
+                    I arrived at the study, closed with glass doors, twinning an entrance into more wood. The doors clicked close behind me, and was immediately startled by a bearhead. His mouth gaped open, and his eyes at my feet. I quickly retrieved my oxfords, in case he were to bite my digits. I was afraid of animals, and hurting them, nevertheless. Yet with homo sapiens, things were different. I envy, detest, love, hate, and find myself to be a superior being, deserving of all. I am quite so. Unlike the pedestrians who reside in Swallowlands, I speak with poise. I march with dignity. I am well-appointed, and am clean, as the upper are too. I am deserving to be lord; I am the Baron, am I not?
+                        I stumble to the libraries, holding then archives that so belong to this Estate. Near the desk, lay a Mont Blanc fountain pen, with “The Baroness Swallow” engraved onto it. It had shined onto my aqueous blue eyes, and back to the glass of the archive case adjacent. Awards, degrees, relics of foreign lands, gifts, and small frames lined the shelves opposite the books and journals. The window shone brightly onto the bear’s fur, and a fireplace of stone housed birch for burning. I decided to exit the study and move on to the next hall.
+                        The next hallway led to the parlour, where a large 85-inch telly, whom had laid over the gargantuan and cavernous fireplace. In the Georgian era, this was used as a place to boil and cook foods that required a large pot, like Rabbit Stew. The rug was a Persian Oriental masterpiece, malheureusement, covering the gorgeous herringbone parquet that lay below it. The walls were of crimson and dark oak, and the chesterfield that I sat on was of a muddy semi-aniline leather, most likely from Italy. Seats of olive velvet flanked the large loveseat, and a table of solid fir was placed in the centre, with books of art from London on it.
+                        I walked to the kitchen, fragrant with clove, orange, and winter spice. A wee bit too late, as the waters of march, brought printemps to the air, the promise of summer, the promise of life, the promise of love for my heart (I so presume). The aroma was overwhelming for my sensitive spring nostril, as they began to itch. My sting from the reeds was reminded, leading me to itch again on my left calf. I walked over to the dining room, and admired the solid oak table, with a varnish that glistened to mirror the nuaged sky above. I traversed to the large stairwell, and my feet were iced by the frigid stone that stood below my posture. Her warning of unsure trespass was to cool my feet; she (the house) wanted me out. 
+                    Even with a wealthy masque, a plebian, charlatan, or degenerate may not fully hide their lower visage. Insignificant is their beauty. Their skin. Their genealogies. Their children. Their story. They are still, truly, losers. Deluded.
+                        I climbed her stairs to the upper rooms. A corridor ran above the court de loggie, elevated enough to give the foyer space ample headroom and height. I looked at the window, recessed deeply into the plastered wall to have a nice oak bench on it. I saw a British Racing Green Range Rover summon onto the gravel. Muddy, dusty, yet luxurious.
+                        Out came the butler, in his Wellington boots; muddy. The two Jack Russell Terriers; muddy. The interior was blonde, with dials of ceramic, the top of the line. I knew I didn’t want to interact with the butler, as he came back from the hunt, with mud, tired dogs, and an attitude. I hid to the chambers, with navy walls, crimson carpeting, and a bed of poles. I knew, immediately, this was the house for me.
+                        I hid from the staff; I didn’t want to see them, they’re lesser beings than me. I am the Baron Swallow, aren’t I? Husband to the Baroness Swallow, no? I sure think so.
+                        Ah, the Baroness. The most beautiful woman I have ever met. Chestnut hair that flowed to her shoulders. Freckles kissed by the hidden sun, who shied from her presence. Adorable nose, and a gorgeous voice, not a midlands accent like many locals have in Swallowlands. She is who I love, and long to be with, and whom I’m with.
+                        We met long ago—In Cambridge. I saw her from afar, her aura was oddly pleasant, different from the other women and men. I found her special, and I passed her with a look of impression. It occurred every week, until I stopped her one day, to ask her for tea at the mess hall. She accepted, and we dated for the rest of the year.
+                        She studied Political Science, as she was the heiress to the old Baron’s fortune and was to be the landowner of the Estate. I knew I wanted to be with her, and we loved each other.
+                        There was a time when I started understanding her class schedules, and when she’d pass near my classes. I timed my exit from the lectures perfectly, so I can catch her, and we could fuck in the washrooms. We’d caress and kiss so passionately, it had felt incredible; aweing. I wanted this feeling forever.
+                        She felt, eventually, that I was stalking her, and felt uncomfortable, especially when I confronted her to make out with me after the night classes. She was tired and kept telling me to stop. I found it extremely erotic, yet apparently, to her, she called it sexual assault.
+                    I was confused, sad, and heartbroken. She stopped talking to me, as she thought I was a wanker, a creep, and a stalker. I think she was overreacting like women often do. We’re still together, although we don’t talk. I only stay at the estate when she’s in London during question periods at the House of Lord’s chamber. 
+                        I love having the house to myself. It’s clean, and relaxing, and I get to walk in where I please. I go where I want when I want, and I stay away from the plebian servants. 
+                        Ah, the baroness. I love her so much. Her house is as beautiful as she is, why must we be separate all the time? I want her, and I presume vice-versa.
+                        When will I see her next? When will she be summoned amongst more Range Rovers? Or perchance an Aston Martin? That would be elegant and posh. Oh, what a wonderful dream of mine.
+                        I heard the cook leave for the evening, as he concluded his session of meal prep. The rubbish was emptied into the main bin by the coach house and stables. I ordered Fish & Chips from the Rooster, Cock, Chick, and Hen, as they have my favourite batter. I enjoyed it by the large fire, with feet on the leather ottoman. I enjoyed some news from the BBC—the usual stuff, politics, children dying, a white woman in a Hijab interviewing innocent civilians residing in Syria, the late Queen and her whereabouts, and finally, the section on The House of Lords. Oh! There she was; gorgeous, beautiful, a striking woman, fit to be my bride.
+                        I was planning a proposal for her, a gorgeous woman, she deserves one. I think I will follow through with it, as she is the most wonderful woman in the world. I have the most perfect plan to execute it.
                     
-                    Yours Truly.”
+                        The chambers upstairs had an iMac, which I use to read news, watch pornography, and check Facebook. That was my morning routine. I’m always trying to find out her whereabouts, where she is, and hoping she is not cheating on me. I still communicate with her…as friends (she likes to say), and I hear about her life occasionally. I checked her Instagram story, and there I find, her smooching the cheeks of a man, next to a vegan café, eating artisanal toast and sipping cappuccinos. After 10 o’clock? The audacity. Two sins—she will have an awful flatulence today, that’s why the Italians choose to enjoy cappuccinos in the morning, and not the evening, so they may digest the lactose when their gut can.
+                    
+                    I texted her:
+                    
+                        “Dearest Baroness,
+                        Why must you be with another man, when you were always with me in my heart?	Your betrayal to my heart is baffling; grotesque. You dare to betray your soulmate
+                        For another man? He must be the Baron. Why? Why can’t I? I am the royal one?
+                        I am too related to your family, from very far! I may make your bloodline pure!
+                        I shall be for you, not this idiot from the street, in which you’ve just met.
+                        Come back home. I would like a wee chat with you.
+                        I look forward to discussing this matter with you.
+                        I have the honour to be, madam, your obedient servant.
+                        
+                        Yours Truly.”
+                    
+                    I was truly baffled when I received this message:
+                    
+                        “Are you bloody delusional? We have been separated for over 8 years. Whoever
+                        I’m in a relationship with you now, is none of your fucking business, you twat!”
+                    
+                    Is the baroness mad? Perhaps wicked? Why has she said that awful message, knowing that we’ve been together for over a decade, happy, and quiet?
+                        No news is good news, isn’t it?
+                    
+                        The driveway began to make a sound again, this time, with a Jaguar F-Pace appearing out onto the gravelled court. I saw two silhouettes emerge from the silver doors—The Baroness, and another man. They were both dressed rather eloquently, and ready for a state dinner. The baroness wore a cocktail dress in velvet charcoal, with a pearl necklace, white Valentino stilettos, and a Bvlgari watch, in a brassy-silver colour. Not exactly gold, but not silver, either. It was very nice, as it reflected the remnants of the sun into my eyes, as I peeped through the curtains.
+                        The gentleman dressed well, too. I felt jealous and envious of their good looks. He wore a camel-coloured Ralph Lauren sweater, with a white shirt below, Khaki trousers, brown oxfords, a Breitling watch (that matched the chaussures), and Ray-Bans to cover the sun.
+                        He was a good-looking gentleman, too. Blonde, and stubble, looks like a Hemsworth brother, that’s the closest resemblance to him. I was envious of them. They dressed well and looked fabulous together.
+                        As they were greeted by the butler with an open door, and the two dogs. The dogs climbed onto their dress, freshly washed, they did not leave any stains of mud that remained from the hunt. 
+                        Meanwhile, I went to the attic above, to give her space. The attic was my space in the house, where I lived. The views were nice, the space was ample, and it was rather temperate. Not stuffy, and not cold. The insulation kept the heat well, and the morning sun brought much-needed heat to the space. If it got too hot, I’d open a window.
+                        I spied down into the main floor, hiding in the cellar vestibule. The door, facing the kitchen, had a keyhole that made it possible to see everything. As the couple settled in the foyer, I hid and overheard the man say that he had important business to attend to, and that he couldn’t stay much longer. They kissed and left.
+                        As the Baroness entered the kitchen, she saw a plate of half-consumed Fish & Chips from the Rooster, Cock, Chick, and Hen. Her favourite. Yet, she was concerned, as the staff would never leave this mess. Ah, but she disregarded it—they arrived much earlier than the butler had anticipated, so perhaps, this was his supper. It was her favourite, and was she hungry!
+                        She consumed the remnants of it and loved it. 
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+                    </p>
+            </section>
+            <section id="Chap2T">
+                <h1>Contra Passeres.</h1>
+            </section>
+            <br/>
+            <section id="Chap2">
+                <p>
+                    I heard her phone the butler. She leaves a message:
+
+                    “I have eaten your Fish & Chips. Apologies. I was rather hungry, and they looked
+                    lovely.”
                 
-                I was truly baffled when I received this message:
+                The Baroness then ended the call. She walked gracefully towards the cellar door, looking at me through the keyhole, and swiftly moved away towards the staircase.
+                My heart pounded. In anxiety. In love. I opened the cellar door, to exit the cellar.
+                    She saw me. She knew I was there. Thus, she is allowing me to be with her still! This is my house! I am the Baron Swallow, am I not? 
+                    I hear the Baroness change into some clothes for trekking. She was to walk the dogs once more on the picturesque fog day.
+                I went ahead and ate the pizza in the fridge that the cook had brewed up the day passé. I left it out, as I had better things to do.
+                As the house went mortus, I re-arranged the drawing room. Then the parlour. Then the study. I gathered all the pictures that I fancied and kept them safe. The rest were to be sent to the bin; I didn’t want them near me. I went to the room in which the Baroness had laid, and I took her clothes that I felt made her look good and put them in the pile of things I liked.
+                    I made a realisation—the images of the old Baron Swallow were not of her father, but of the fine gentleman that she had been with. He was the Baron Swallow? Nonsense. I took them, and put them aside somewhere safe, away from the items of beauty that I loved.
+                    Her favourite clothes that I detested. Her favourite frames that I longed to destroy. I was cross with her. How dare she betray me! How dare she hurt me this way! I loved her more than the world would ever love her, and she repaid me with spite? With a man that I could not stand to see, because he bested me in every way? Money, looks, fashions, and sports, perchance. He looked fit. More fit than myself. Oh, how I reeked with anger, rotten with evil I became. Fuck you, Baron! Fuck you, Baroness! With your ego so large, it only cares for yourself. You, who are broken by power. You who are absent all day! The crumbs of love that you’ve offered me, were the crumbs that I’ve left behind. It is your turn, beloved. It is your flesh that I must wear.
                 
-                    “Are you bloody delusional? We have been separated for over 8 years. Whoever
-                    I’m in a relationship with you now, is none of your fucking business, you twat!”
+                    I throw the items of spite into the monstrous fireplace. I kindle the flames with the “Baron” ‘s portrait, and it ignites.
+                    It lights.
+                    It sparks.
+                    It crackles.
+                    It spreads.
+                    It burns.
+                    It burns.
+                    It burns.
+                    It spreads.
+                    It smokes.
+                    It engulfs.
+                    It is aflame.
                 
-                Is the baroness mad? Perhaps wicked? Why has she said that awful message, knowing that we’ve been together for over a decade, happy, and quiet?
-                    No news is good news, isn’t it?
+                To keep my cardial innards warm, during this cold March day, I must kindle the fire with the warmth that I long to hold.
+                In Portuguese, there’s a saying.
+                    “É pau, é pedra, é o fim do caminho, É um resto de toco, é um pouco sozinho.
+                    Sao as águas de março fechando o verao, É a promessa de vida no teu coraçao.”
                 
-                    The driveway began to make a sound again, this time, with a Jaguar F-Pace appearing out onto the gravelled court. I saw two silhouettes emerge from the silver doors—The Baroness, and another man. They were both dressed rather eloquently, and ready for a state dinner. The baroness wore a cocktail dress in velvet charcoal, with a pearl necklace, white Valentino stilettos, and a Bvlgari watch, in a brassy-silver colour. Not exactly gold, but not silver, either. It was very nice, as it reflected the remnants of the sun into my eyes, as I peeped through the curtains.
-                    The gentleman dressed well, too. I felt jealous and envious of their good looks. He wore a camel-coloured Ralph Lauren sweater, with a white shirt below, Khaki trousers, brown oxfords, a Breitling watch (that matched the chaussures), and Ray-Bans to cover the sun.
-                    He was a good-looking gentleman, too. Blonde, and stubble, looks like a Hemsworth brother, that’s the closest resemblance to him. I was envious of them. They dressed well and looked fabulous together.
-                    As they were greeted by the butler with an open door, and the two dogs. The dogs climbed onto their dress, freshly washed, they did not leave any stains of mud that remained from the hunt. 
-                    Meanwhile, I went to the attic above, to give her space. The attic was my space in the house, where I lived. The views were nice, the space was ample, and it was rather temperate. Not stuffy, and not cold. The insulation kept the heat well, and the morning sun brought much-needed heat to the space. If it got too hot, I’d open a window.
-                    I spied down into the main floor, hiding in the cellar vestibule. The door, facing the kitchen, had a keyhole that made it possible to see everything. As the couple settled in the foyer, I hid and overheard the man say that he had important business to attend to, and that he couldn’t stay much longer. They kissed and left.
-                    As the Baroness entered the kitchen, she saw a plate of half-consumed Fish & Chips from the Rooster, Cock, Chick, and Hen. Her favourite. Yet, she was concerned, as the staff would never leave this mess. Ah, but she disregarded it—they arrived much earlier than the butler had anticipated, so perhaps, this was his supper. It was her favourite, and was she hungry!
-                    She consumed the remnants of it and loved it. 
+                Wood, Stone, it’s the end of the road. A wee bit of stump. I’m feeling alone. It’s the waters of March, fetching the summer, the promise of life to your heart.
+                    You should have remembered that phrase, as I narrated it at the beginning of my story.
+                
+                    I watch it burn. Burn to ash, until the fireplace is pigmented from black to bone.
+                The Baroness smells smoke from the estate. The chimney’s flue transports a waft of thick smoke to the Baroness’ nostril, and she immediately runs to the house.
+                    She runs into the house.
+                
+                    “Butler! What in the world are you d—…”
+                    “—Eh…he’s not here…”
+                
+                    “I’m home!” I cried.
+                “I’m here. I’m here for you. To love, to care, to caress, to kiss.”
+                
+                “Hmm. I’ll just head to the chambers, I guess…”
+                
+                As she walked away from me, my love, my desire to give her the world, in which I may foretake, she left me to fry—to rot in the fire.
+                    How dare she...
+                </p>
+            </section>
+            <section id="Chap3T">
+                <h1>Veritas.</h1>
+            </section>
+            <br/>
+            <section id="Chap3">
+                <p>
+                        As I walked through the wooded corridors of my home, I heard weak screams of cries to me. Someone longing to join me near the rotten fireside.
+                    I questioned my sanity—my mood. I must have been hallucinating from all the carcinogenic fumes wafting into my pretty little nose.
+                    The voice felt familiar, a déja-vù of sorts. I know this voice, his face, his presence. I did love him once, many years ago. He was a kind soul that had genuinely loved me more than my father ever did to me. He was a man who cared and was loyal, reliable, and witty. I enjoyed his company, yet I felt unsettled by his company—his aura. His presence was inauthentic; untrue to who he really was. Perhaps his ego engulfed his person, fully hiding his true identity behind a cloak of musou. Phantom-like, his true being was inexistent and was surely killed long before I was able to make an impression of who he was as a person. 
+                    Was his ego manic? Was this the reason that I could not stand him? Has he lost his eyes, his nose, his face, his palms to touch?
+                    His humour? His maturity? His moral compass? His logic or intelligence? Has his brain spoiled into mouldy crevices of gris, pink, verdant matte, spreading spores of danger and bipolarity throughout my household? My estate? Putting all people residing here at risk? Have I grown anxious by his radiance? Has my trauma of the past, his rape, made me paranoid? Am I the paranoia, and he, the delusion?
+                        Am I the Paranoid Baroness? Have I gone mad? I cannot be certain until I find the truth in my hypothesis. I need the truth—veritas, facts, and evidence before I carry on with my ire cries for aide. I need focus—he cannot be here. It is impossible, Birmingham, where he resided was much too far for him to reside in the middle of nowhere. In which, Swallowlands is, in fact, the middle of nowhere.
+                        I opened my eyes, as the smoke had ended, and morphed into ash. They were now ready to see the truth of life. My eyes took the light that shone from the fogged panes and added to my suspicion. Frames were evidently missing… papers and shards of glass remained scattered amongst my floors. I stepped with caution, keeping my head low and fixed to my pedicured feet. As they walked along the sooted way, they felt a random stick to the floor.
+                        The soot stopped. The floor felt normal.
+                    I was concerned, and I went upstairs to see if anything else had changed.
+                    My garde-de-robe. Fresh, clean, and curated has always been my favourite place to spend time in. Heirlooms, gifts, costumes, outfits, and designer collections were neatly organised by my maid and seamstress.
+                        I expected a normal appearance, everything fine, yet in lieu, a pigsty.
+                    My Dior dresses fell onto my sheepskin, my Hermès purse had been ripped onto the boudoir’s floor. My encrusted jewelled necklaces were scattered among the hairs of sheep, lost among the countless pearls. They blended with the floor, making it impossible to find such little rocks of value.
+                        I had questioned myself. Could it have been the maid? Or who could have set my home into an anarchic play space? 
+                    I decided to wash the noir soot that substituted my foundation from my face.
+                    As I climbed into the washroom, I closed the door, but it could not close.
+                    As I tugged, it had struggled to shut. I gave in, finding the shutting unnecessary.
+                    I felt the smell worsen, and the heat increase slightly. There was darkness that engulfed the light of the candelabras that shone above. The room felt oddly dim.
+                    I knew the smell. I knew the aura. I knew the sounds of breath that lurked I knew the reflection, I kn—
+                    
+                    “Knew his face, you twat?! How dare you betray me? How dare you cheat the love
+                    that we cherished for the years that passed! How dare you destroy my legacy of
+                    nobility! How dare you remove the potential; the future! How dare you remove the 	worthiness of our children! How dare you spoil our bloodline! How dare you
+                    incinerate my worth! How dare you hurt the only man who will love you! How dare 		you disfigure such a man! How dare you morph him out of his ego, into the
+                        light—into the light, into the light, the light I must shine to jettison from the curse of
+                        confusion! My worth is pronounced by a title. You are mortus. Thy have lost the
+                        chance of worthiness. My being may be true. I am the baron swallow. You are
+                        a cadaver, nevertheless, of unworthy flesh, who cheats on her love, with another.
+                        How I offer my most sincere condolences to you bloody dogs, servants, and 		mates.”
+                    
+                    As he ran away, a slam that shook the walls of the manor, dislodged most paintings, ending my suffocation with a dropped chandelier.
+                    </p>
+            </section>
+            <section id="Chap4T">
+                <h1>Exeunt.</h1>
+            </section>
+            <br/>
+            <section id="Chap4">
+                <p>
+                    My fiancée will be happy to hear of my cancelled rendezvous with the businessmen from Switzerland. Their flight was cancelled due to the horrid storm that was en route to them, and that made me have the best idea. I ordered some Chinese takeout for the house, and I’m heading back. I speeded through the M1 as hurriedly as I could, avoiding the Sheffield congestion. As I rushed home, I felt a sense of unsettlement—the meeting was cancelled. The storm…someone was sending me a message of caution. Be prudent. Was I to crash and kill myself before our wedding? Was I still the presumed Baron Swallow?
+                    As I arrived home, I smelt something horrid. It began with spring fog, cattle manure from the farmlands that flank the property. None of that was out-of-the-ordinary, just regular occurrences in the countryside.
+                    Then, I began to smell smoke. Burning flesh. The scent of burning wood, powdered stone, fresh cadaver, with the smell of a broken ego. I’m unsure of how I know that, yet, here I am.
+                    I summoned myself onto the gravelled court, as the servants were going home for the evening, and I noticed steamed panes surrounded the property. The aroma became more and more pungent.
+                    As I entered the marble foyer, I noticed dirt, portraits hung on the floor. Dented, ripped. Bruised.
+                The floors were washed in soot, with footsteps of barefoot and leather soles, showing a clear imprint of where she stepped. Who was the large footprint of leather sole? Was it another man? Was she cheating, and tried to burn evidence? 
+                    I carried on my promenade and found a lack of pictures of myself or the baroness. Why would they leave? Have we been vandalised by a gang of thieves from Nottingham? Wanting some treasures, some heirlooms.
+                Heirlooms. The jewellery. The boudoir. I must check her garde-de-robe. As I ran upstairs, the fleshy, bloody, smell increased. The doors to her boudoir were oddly opened, and a mess of diamonds, pearls, emeralds, and ripped garments were spread along the lambswool mat. I was glad to have been keeping my shoes on whilst checking this pigsty, this abandonment of property. I would have cut my feet on this space, and perchance, I would have bled on the already greyed and frayed mat that lay below my shoes.
+                    When I saw blood, my heart dropped. I expected issues rather imminently, and yet this was a bit slow. I was worried about opening the door, yet not. I knew someone was dead. I knew there would be problems to come.
+                    I opened the door…and slipped on the blood…
+                
+                That’s all I can recall, I’m afraid.
+                
+                -	James Willersley, 9th Baron Consort of Swallow 
+                Former Fiancé to Lea Matlock, 9th Baroness of Swallow 
+                
+                </p>
+            </section>
+            <section id="Chap5T">
+                <h1>Epilogue.</h1>
+            </section>
+            <br/>
+            <section id="Chap5">
+                <p>
+                    Unclassified as of Thursday, the 13th of April, 2023, 0900h.
 
-
-
-
-
-
-
-
-
-
-
-
+                    A female, 28, identified as Lea Alena Matlock of Swallow, 9th Baroness Swallow, was brutally suffocated in her washroom by an unidentified suspect on Wednesday, the 12th of April, 2023, in which a crystal chandelier, with 75 lbs (or 34.1 kilograms) of crystal, fell onto her from a ceiling height of 192” ceilings (or 4.87 metres) of height. The net force was 334.5 newtons of force onto her head, impaling her as soon as she fell. The suspect was found near Cromford, burnt until non-recognisable. This has been deemed a suicide. Given the circumstances, the current consort to the Baroness, James Willersley, will continue her duties in the interim, until the Swallow family may find a suitable heir to the estate and place in the House of Lords. The house is to be fully mended to its former glory, and the consort will use family grants to restore the estate and pay for funeral expenses. The family and consort would like to invite the citizens of Matlock, Middleton, Cromford, Holloway, Bolehill, and Tansley, to the Baroness’ funeral. A light reception will follow the procession. The Derbyshire Police would like to offer the Baroness and her family their most sincere condolences for their loss. 
+                    
+                    Yours sincerely,
+                    
+                    S. Sgt. Andrew Ashbourne
+                    Special Constable, Derbyshire Police Department.
+                    
+                    Jessica Wirksworth
+                    Chief Editor, Matlock Chronicle.
                     
                 </p>
-        </section>
-        <section id="Chap2T">
-            <h1>Contra Passeres.</h1>
-        </section>
-        <br/>
-        <section id="Chap2">
-            <p>
-                I heard her phone the butler. She leaves a message:
-
-                “I have eaten your Fish & Chips. Apologies. I was rather hungry, and they looked
-                lovely.”
-            
-            The Baroness then ended the call. She walked gracefully towards the cellar door, looking at me through the keyhole, and swiftly moved away towards the staircase.
-            My heart pounded. In anxiety. In love. I opened the cellar door, to exit the cellar.
-                She saw me. She knew I was there. Thus, she is allowing me to be with her still! This is my house! I am the Baron Swallow, am I not? 
-                I hear the Baroness change into some clothes for trekking. She was to walk the dogs once more on the picturesque fog day.
-            I went ahead and ate the pizza in the fridge that the cook had brewed up the day passé. I left it out, as I had better things to do.
-             As the house went mortus, I re-arranged the drawing room. Then the parlour. Then the study. I gathered all the pictures that I fancied and kept them safe. The rest were to be sent to the bin; I didn’t want them near me. I went to the room in which the Baroness had laid, and I took her clothes that I felt made her look good and put them in the pile of things I liked.
-                I made a realisation—the images of the old Baron Swallow were not of her father, but of the fine gentleman that she had been with. He was the Baron Swallow? Nonsense. I took them, and put them aside somewhere safe, away from the items of beauty that I loved.
-                Her favourite clothes that I detested. Her favourite frames that I longed to destroy. I was cross with her. How dare she betray me! How dare she hurt me this way! I loved her more than the world would ever love her, and she repaid me with spite? With a man that I could not stand to see, because he bested me in every way? Money, looks, fashions, and sports, perchance. He looked fit. More fit than myself. Oh, how I reeked with anger, rotten with evil I became. Fuck you, Baron! Fuck you, Baroness! With your ego so large, it only cares for yourself. You, who are broken by power. You who are absent all day! The crumbs of love that you’ve offered me, were the crumbs that I’ve left behind. It is your turn, beloved. It is your flesh that I must wear.
-            
-                I throw the items of spite into the monstrous fireplace. I kindle the flames with the “Baron” ‘s portrait, and it ignites.
-                It lights.
-                It sparks.
-                It crackles.
-                It spreads.
-                It burns.
-                It burns.
-                It burns.
-                It spreads.
-                It smokes.
-                It engulfs.
-                It is aflame.
-            
-            To keep my cardial innards warm, during this cold March day, I must kindle the fire with the warmth that I long to hold.
-            In Portuguese, there’s a saying.
-                “É pau, é pedra, é o fim do caminho, É um resto de toco, é um pouco sozinho.
-                Sao as águas de março fechando o verao, É a promessa de vida no teu coraçao.”
-            
-            Wood, Stone, it’s the end of the road. A wee bit of stump. I’m feeling alone. It’s the waters of March, fetching the summer, the promise of life to your heart.
-                You should have remembered that phrase, as I narrated it at the beginning of my story.
-            
-                I watch it burn. Burn to ash, until the fireplace is pigmented from black to bone.
-            The Baroness smells smoke from the estate. The chimney’s flue transports a waft of thick smoke to the Baroness’ nostril, and she immediately runs to the house.
-                She runs into the house.
-            
-                “Butler! What in the world are you d—…”
-                “—Eh…he’s not here…”
-            
-                “I’m home!” I cried.
-             “I’m here. I’m here for you. To love, to care, to caress, to kiss.”
-            
-            “Hmm. I’ll just head to the chambers, I guess…”
-            
-            As she walked away from me, my love, my desire to give her the world, in which I may foretake, she left me to fry—to rot in the fire.
-                How dare she...
-            </p>
-        </section>
-        <section id="Chap3T">
-            <h1>Veritas.</h1>
-        </section>
-        <br/>
-        <section id="Chap3">
-            <p>
-                    As I walked through the wooded corridors of my home, I heard weak screams of cries to me. Someone longing to join me near the rotten fireside.
-                I questioned my sanity—my mood. I must have been hallucinating from all the carcinogenic fumes wafting into my pretty little nose.
-                The voice felt familiar, a déja-vù of sorts. I know this voice, his face, his presence. I did love him once, many years ago. He was a kind soul that had genuinely loved me more than my father ever did to me. He was a man who cared and was loyal, reliable, and witty. I enjoyed his company, yet I felt unsettled by his company—his aura. His presence was inauthentic; untrue to who he really was. Perhaps his ego engulfed his person, fully hiding his true identity behind a cloak of musou. Phantom-like, his true being was inexistent and was surely killed long before I was able to make an impression of who he was as a person. 
-                Was his ego manic? Was this the reason that I could not stand him? Has he lost his eyes, his nose, his face, his palms to touch?
-                His humour? His maturity? His moral compass? His logic or intelligence? Has his brain spoiled into mouldy crevices of gris, pink, verdant matte, spreading spores of danger and bipolarity throughout my household? My estate? Putting all people residing here at risk? Have I grown anxious by his radiance? Has my trauma of the past, his rape, made me paranoid? Am I the paranoia, and he, the delusion?
-                    Am I the Paranoid Baroness? Have I gone mad? I cannot be certain until I find the truth in my hypothesis. I need the truth—veritas, facts, and evidence before I carry on with my ire cries for aide. I need focus—he cannot be here. It is impossible, Birmingham, where he resided was much too far for him to reside in the middle of nowhere. In which, Swallowlands is, in fact, the middle of nowhere.
-                    I opened my eyes, as the smoke had ended, and morphed into ash. They were now ready to see the truth of life. My eyes took the light that shone from the fogged panes and added to my suspicion. Frames were evidently missing… papers and shards of glass remained scattered amongst my floors. I stepped with caution, keeping my head low and fixed to my pedicured feet. As they walked along the sooted way, they felt a random stick to the floor.
-                    The soot stopped. The floor felt normal.
-                I was concerned, and I went upstairs to see if anything else had changed.
-                My garde-de-robe. Fresh, clean, and curated has always been my favourite place to spend time in. Heirlooms, gifts, costumes, outfits, and designer collections were neatly organised by my maid and seamstress.
-                    I expected a normal appearance, everything fine, yet in lieu, a pigsty.
-                My Dior dresses fell onto my sheepskin, my Hermès purse had been ripped onto the boudoir’s floor. My encrusted jewelled necklaces were scattered among the hairs of sheep, lost among the countless pearls. They blended with the floor, making it impossible to find such little rocks of value.
-                    I had questioned myself. Could it have been the maid? Or who could have set my home into an anarchic play space? 
-                I decided to wash the noir soot that substituted my foundation from my face.
-                As I climbed into the washroom, I closed the door, but it could not close.
-                As I tugged, it had struggled to shut. I gave in, finding the shutting unnecessary.
-                I felt the smell worsen, and the heat increase slightly. There was darkness that engulfed the light of the candelabras that shone above. The room felt oddly dim.
-                I knew the smell. I knew the aura. I knew the sounds of breath that lurked I knew the reflection, I kn—
-                
-                “Knew his face, you twat?! How dare you betray me? How dare you cheat the love
-                that we cherished for the years that passed! How dare you destroy my legacy of
-                nobility! How dare you remove the potential; the future! How dare you remove the 	worthiness of our children! How dare you spoil our bloodline! How dare you
-                incinerate my worth! How dare you hurt the only man who will love you! How dare 		you disfigure such a man! How dare you morph him out of his ego, into the
-                    light—into the light, into the light, the light I must shine to jettison from the curse of
-                    confusion! My worth is pronounced by a title. You are mortus. Thy have lost the
-                    chance of worthiness. My being may be true. I am the baron swallow. You are
-                    a cadaver, nevertheless, of unworthy flesh, who cheats on her love, with another.
-                    How I offer my most sincere condolences to you bloody dogs, servants, and 		mates.”
-                
-                As he ran away, a slam that shook the walls of the manor, dislodged most paintings, ending my suffocation with a dropped chandelier.
-                </p>
-        </section>
-        <section id="Chap4T">
-            <h1>Exeunt.</h1>
-        </section>
-        <br/>
-        <section id="Chap4">
-            <p>
-                My fiancée will be happy to hear of my cancelled rendezvous with the businessmen from Switzerland. Their flight was cancelled due to the horrid storm that was en route to them, and that made me have the best idea. I ordered some Chinese takeout for the house, and I’m heading back. I speeded through the M1 as hurriedly as I could, avoiding the Sheffield congestion. As I rushed home, I felt a sense of unsettlement—the meeting was cancelled. The storm…someone was sending me a message of caution. Be prudent. Was I to crash and kill myself before our wedding? Was I still the presumed Baron Swallow?
-                As I arrived home, I smelt something horrid. It began with spring fog, cattle manure from the farmlands that flank the property. None of that was out-of-the-ordinary, just regular occurrences in the countryside.
-                Then, I began to smell smoke. Burning flesh. The scent of burning wood, powdered stone, fresh cadaver, with the smell of a broken ego. I’m unsure of how I know that, yet, here I am.
-                I summoned myself onto the gravelled court, as the servants were going home for the evening, and I noticed steamed panes surrounded the property. The aroma became more and more pungent.
-                As I entered the marble foyer, I noticed dirt, portraits hung on the floor. Dented, ripped. Bruised.
-            The floors were washed in soot, with footsteps of barefoot and leather soles, showing a clear imprint of where she stepped. Who was the large footprint of leather sole? Was it another man? Was she cheating, and tried to burn evidence? 
-                I carried on my promenade and found a lack of pictures of myself or the baroness. Why would they leave? Have we been vandalised by a gang of thieves from Nottingham? Wanting some treasures, some heirlooms.
-            Heirlooms. The jewellery. The boudoir. I must check her garde-de-robe. As I ran upstairs, the fleshy, bloody, smell increased. The doors to her boudoir were oddly opened, and a mess of diamonds, pearls, emeralds, and ripped garments were spread along the lambswool mat. I was glad to have been keeping my shoes on whilst checking this pigsty, this abandonment of property. I would have cut my feet on this space, and perchance, I would have bled on the already greyed and frayed mat that lay below my shoes.
-                When I saw blood, my heart dropped. I expected issues rather imminently, and yet this was a bit slow. I was worried about opening the door, yet not. I knew someone was dead. I knew there would be problems to come.
-                I opened the door…and slipped on the blood…
-            
-            That’s all I can recall, I’m afraid.
-            
-            -	James Willersley, 9th Baron Consort of Swallow 
-            Former Fiancé to Lea Matlock, 9th Baroness of Swallow 
-            
-            </p>
-        </section>
-        <section id="Chap5T">
-            <h1>Epilogue.</h1>
-        </section>
-        <br/>
-        <section id="Chap5">
-            <p>
-                Unclassified as of Thursday, the 13th of April, 2023, 0900h.
-
-                A female, 28, identified as Lea Alena Matlock of Swallow, 9th Baroness Swallow, was brutally suffocated in her washroom by an unidentified suspect on Wednesday, the 12th of April, 2023, in which a crystal chandelier, with 75 lbs (or 34.1 kilograms) of crystal, fell onto her from a ceiling height of 192” ceilings (or 4.87 metres) of height. The net force was 334.5 newtons of force onto her head, impaling her as soon as she fell. The suspect was found near Cromford, burnt until non-recognisable. This has been deemed a suicide. Given the circumstances, the current consort to the Baroness, James Willersley, will continue her duties in the interim, until the Swallow family may find a suitable heir to the estate and place in the House of Lords. The house is to be fully mended to its former glory, and the consort will use family grants to restore the estate and pay for funeral expenses. The family and consort would like to invite the citizens of Matlock, Middleton, Cromford, Holloway, Bolehill, and Tansley, to the Baroness’ funeral. A light reception will follow the procession. The Derbyshire Police would like to offer the Baroness and her family their most sincere condolences for their loss. 
-                
-                Yours sincerely,
-                
-                S. Sgt. Andrew Ashbourne
-                Special Constable, Derbyshire Police Department.
-                
-                Jessica Wirksworth
-                Chief Editor, Matlock Chronicle.
-                
-            </p>
-        </section>
-        <section id="Tnotes">
-            <h1>Notes.</h1>
-        </section>
-        <br/>
-        <section id="notes">
-            <p>
-                The story was inspired by the killer Richard Ramirez, who killed 13 women, and was a sex offender. He strangled, concussed, and stabbed women he raped. The story also covers the problem of mania, personality disorders, and egos that can remove and change one’s personality. The killer is known as the Deluded Baron, as he has no name in the story, no face, no body, only a silhouette of his figure. No one knows how he truly looks like, except strangers and the Baroness. Even so, the baroness has low recollection on his features.
-                The vocabulary integrates Norman English, Latin, British English, and accurate location, with one name-change. Swallowlands. Swallowlands is a faux-place, based on a group of towns in Derbyshire—1 hour from Nottingham, and 2-3 hours from Sheffield and Birmingham, where the Deluded Baron grew up. Power corrupts people, and the Deluded Baron is a great example of how select people may go insane with a taste of power. 
-                Mental health is important, as well as the understanding and acknowledgement of facts. The Deluded Baron himself, never had friends or supportive family to ask him what was right or wrong, whether his perspective was correct. This led him to create a new personality to make a new circle of friends in the higher echelon of class, leading him to go mad when he became homeless, squatting in the attic of the Estate, and finally realising that the Baroness was in a relationship, after 10 years of no physical contact.
-                The names for each chapter were strategic. Fallacia Præteria means Delusional Past—The start of the story, and the Deluded Baron’s perspective. He introduces the setting, his perspective, and how he believes all is well. He convinces the reader that he is a normal person, and makes it seem quite believable at first.
-                Contra Passeres is extremely strategic in name. It means Against Sparrows, and Passed against (her will). He goes and makes a mess of the house, destroying her heirloom without consent, to hurt her as she allegedly hurt him.
-                Veritas is Truth. Veritas is Harvard’s motto, and it shows the perspective of the Baroness, showing the perspective that he is delusional.
-                Exeunt is the exit to the story. He provides a narrative from the Baron, the fiancé of the Baroness. He shows his love and impressions of the situation, and provides it to the police, which is later written as a joint report from the Derbyshire Police and the Matlock Chronicles, to offer an invite to the Baroness’s Funeral, and providing a situation report to the locals.
-                We all hope you enjoy the story, the narration, the interactive images, and the immersion that this will provide you. Thank you for taking the time to experience the story of The Deluded Baron.
-                </p>
-        </section>
+            </section>
+            <section id="Tnotes">
+                <h1>Notes.</h1>
+            </section>
+            <br/>
+            <section id="notes">
+                <p>
+                    The story was inspired by the killer Richard Ramirez, who killed 13 women, and was a sex offender. He strangled, concussed, and stabbed women he raped. The story also covers the problem of mania, personality disorders, and egos that can remove and change one’s personality. The killer is known as the Deluded Baron, as he has no name in the story, no face, no body, only a silhouette of his figure. No one knows how he truly looks like, except strangers and the Baroness. Even so, the baroness has low recollection on his features.
+                    The vocabulary integrates Norman English, Latin, British English, and accurate location, with one name-change. Swallowlands. Swallowlands is a faux-place, based on a group of towns in Derbyshire—1 hour from Nottingham, and 2-3 hours from Sheffield and Birmingham, where the Deluded Baron grew up. Power corrupts people, and the Deluded Baron is a great example of how select people may go insane with a taste of power. 
+                    Mental health is important, as well as the understanding and acknowledgement of facts. The Deluded Baron himself, never had friends or supportive family to ask him what was right or wrong, whether his perspective was correct. This led him to create a new personality to make a new circle of friends in the higher echelon of class, leading him to go mad when he became homeless, squatting in the attic of the Estate, and finally realising that the Baroness was in a relationship, after 10 years of no physical contact.
+                    The names for each chapter were strategic. Fallacia Præteria means Delusional Past—The start of the story, and the Deluded Baron’s perspective. He introduces the setting, his perspective, and how he believes all is well. He convinces the reader that he is a normal person, and makes it seem quite believable at first.
+                    Contra Passeres is extremely strategic in name. It means Against Sparrows, and Passed against (her will). He goes and makes a mess of the house, destroying her heirloom without consent, to hurt her as she allegedly hurt him.
+                    Veritas is Truth. Veritas is Harvard’s motto, and it shows the perspective of the Baroness, showing the perspective that he is delusional.
+                    Exeunt is the exit to the story. He provides a narrative from the Baron, the fiancé of the Baroness. He shows his love and impressions of the situation, and provides it to the police, which is later written as a joint report from the Derbyshire Police and the Matlock Chronicles, to offer an invite to the Baroness’s Funeral, and providing a situation report to the locals.
+                    We all hope you enjoy the story, the narration, the interactive images, and the immersion that this will provide you. Thank you for taking the time to experience the story of The Deluded Baron.
+                    </p>
+            </section>
     </body>
 </html>
