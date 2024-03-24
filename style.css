@@ -6,6 +6,29 @@
     font-family: 'Baskerville', serif;
 }
 
+#titleAudio {
+    display: none; /* Hide the audio player initially */
+}
+
+#Chap1Audio {
+    display: none; /* Hide the audio player initially */
+}
+
+#Chap2Audio {
+    display: none; /* Hide the audio player initially */
+}
+
+#Chap3Audio {
+    display: none; /* Hide the audio player initially */
+}
+
+#Chap4Audio {
+    display: none; /* Hide the audio player initially */
+}
+
+#Chap5Audio {
+    display: none; /* Hide the audio player initially */
+}
 
 body {
     margin: 0;

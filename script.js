@@ -1,24 +1,32 @@
 window.onload = function() {
     // Define audio files for each section
     var audioFiles = {
-        '#title': './Users/santiagobelanger/Downloads/TheDeludedBaronMP3s/Fallacia-Prterita.mp3',
-        '#Chap1T': './Users/santiagobelanger/Downloads/TheDeludedBaronMP3s/Fallacia-Prterita.mp3',
-        '#Chap2T': './Users/santiagobelanger/Downloads/TheDeludedBaronMP3s/Contra Passeres.mp3',
-        '#Chap3T': './Users/santiagobelanger/Downloads/TheDeludedBaronMP3s/Veritas.mp3',
-        '#Chap4T': './Users/santiagobelanger/Downloads/TheDeludedBaronMP3s/Exeunt.mp3',
-        '#Chap5T': './Users/santiagobelanger/Downloads/TheDeludedBaronMP3s/Epilogue.mp3'
+        '#titleAudio': 'Fallacia-Prterita.mp3',
+        '#Chap2TAudio': 'Contra Passeres.mp3',
+        '#Chap2Audio': 'Contra Passeres.mp3',
+        '#Chap3TAudio': 'Veritas.mp3',
+        '#Chap3Audio': 'Veritas.mp3',
+        '#Chap4TAudio': 'Exeunt.mp3',
+        '#Chap4Audio': 'Exeunt.mp3',
+        '#Chap5TAudio': 'Epilogue.mp3',
+        '#Chap5Audio': 'Epilogue.mp3'
     };
 
     var audio = new Audio(); // Create a new audio element
     var isPaused = false; // Flag to track if audio is paused
     var previousScroll = window.scrollY || window.pageYOffset; // Previous scroll position
+    var currentAudioFile = null; // Variable to track the current audio file
 
-    // Function to play audio based on section
+    // Function to play audio for a specific section
     function playAudio(section) {
         var audioFile = audioFiles[section];
         if (audioFile) {
             audio.src = audioFile;
-            audio.play();
+            audio.play()
+                .catch(function(error) {
+                    console.error('Failed to play audio:', error);
+                });
+            currentAudioFile = audioFile;
         }
     }
 
@@ -27,31 +35,25 @@ window.onload = function() {
         // Get the current scroll position
         var currentScroll = window.scrollY || window.pageYOffset;
 
-        // Pause audio if scrolling stops
-        if (currentScroll === previousScroll) {
-            audio.pause();
-        } else {
-            // Determine scroll direction
-            var scrollDirection = currentScroll > previousScroll ? 'down' : 'up';
+        // Determine scroll direction
+        var scrollDirection = currentScroll > previousScroll ? 'down' : 'up';
 
-            // Adjust audio playback based on scroll direction
-            if (scrollDirection === 'up') {
-                // Rewind 10 seconds if scrolling up
-                audio.currentTime = Math.max(0, audio.currentTime - 10);
+        // Find the current section
+        var sections = document.querySelectorAll('section');
+        var currentSectionIndex = 0;
+        for (var i = sections.length - 1; i >= 0; i--) {
+            if (currentScroll >= sections[i].offsetTop) {
+                currentSectionIndex = i;
+                break;
             }
+        }
 
-            // Find the current section
-            var sections = document.querySelectorAll('section');
-            var currentSectionIndex = 0;
-            for (var i = sections.length - 1; i >= 0; i--) {
-                if (currentScroll >= sections[i].offsetTop) {
-                    currentSectionIndex = i;
-                    break;
-                }
+        // Play audio for the current section when scrolling down and audio file is different
+        if (scrollDirection === 'down') {
+            var nextAudioFile = audioFiles['#' + sections[currentSectionIndex].id + 'Audio'];
+            if (nextAudioFile && nextAudioFile !== currentAudioFile) {
+                playAudio('#' + sections[currentSectionIndex].id + 'Audio');
             }
-
-            // Play audio for the current section
-            playAudio(sections[currentSectionIndex].id);
         }
 
         // Update previous scroll position
@@ -107,4 +109,12 @@ window.onload = function() {
 
     // Initial call to handleScroll
     handleScroll();
+
+    // Start playing audio for the first section when the page loads
+    // This function will be triggered by a user click on the document body
+    document.body.addEventListener('click', function() {
+        playAudio('#titleAudio');
+        // Remove the click event listener after the first click to avoid multiple plays
+        document.body.removeEventListener('click', arguments.callee);
+    });
 };
