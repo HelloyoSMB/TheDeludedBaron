@@ -262,7 +262,9 @@ p {
 }
 
 #BCOA {
-    align-content: center;
+    display: block;
+    margin: auto;
+    padding-top: 5rem;
     width: 20rem;
 }
 /* at this point, I need to figure out how to remove that pesky white padding around the left and bottom parts of each section with the section's corresponding colour.
