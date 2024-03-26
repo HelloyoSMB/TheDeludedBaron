@@ -247,5 +247,23 @@ p {
     margin-right: -9%;
 }
 
+#fin {
+    background-color: white;
+    color: black;
+    margin-top: 10rem;
+    padding-top: 5rem; /* Adjusted margin to prevent overlap with Chap1T */
+    padding-bottom: 15rem;
+    margin-bottom: -5rem;
+    order: 1;
+    text-align: center;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    padding-left: 18%;
+    margin-left: -9%; /* Adjusted margin from the left edge */
+    padding-right: 9%;
+    margin-right: -9%;
+}
+
 /* at this point, I need to figure out how to remove that pesky white padding around the left and bottom parts of each section with the section's corresponding colour.
 /* let's get the js working too.
