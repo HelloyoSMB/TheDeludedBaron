@@ -2,12 +2,12 @@ window.onload = function() {
     // Define audio files for each section
     var audioFiles = {
         '#titleAudio': 'Fallacia-Prterita.mp3',
-        '#Chap2TAudio': 'Contra Passeres.mp3',
-        '#Chap2Audio': 'Contra Passeres.mp3',
+        '#Chap2TAudio': 'Contra Passeres 2.mp3',
+        '#Chap2Audio': 'Contra Passeres 2.mp3',
         '#Chap3TAudio': 'Veritas.mp3',
         '#Chap3Audio': 'Veritas.mp3',
-        '#Chap4TAudio': 'Exeunt.mp3',
-        '#Chap4Audio': 'Exeunt.mp3',
+        '#Chap4TAudio': 'Exeunt 2.mp3',
+        '#Chap4Audio': 'Exeunt 2.mp3',
         '#Chap5TAudio': 'Epilogue.mp3',
         '#Chap5Audio': 'Epilogue.mp3'
     };
