@@ -86,6 +86,16 @@ window.onload = function() {
         lingeringComplete = false;
         scrollCount = 0;
       }
+
+      window.addEventListener('scroll', function() {
+        var scrollPosition = window.scrollY;
+        var i2M = document.getElementById('i2M');
+        var i2F = document.getElementById('i2F');
+    
+        // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
+        i2M.style.transform = 'translateX(calc(-45% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i2F.style.transform = 'translateX(calc(35% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+    });
   
       // Update previous scroll position
       previousScroll = currentScroll;
