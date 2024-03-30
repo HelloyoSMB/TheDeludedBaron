@@ -48,8 +48,8 @@ window.onload = function() {
       // Check if user is within the parallax container
         // Inside the handleScroll function
 
-        // Check if user is within the parallax container
-        var parallaxContainer = document.getElementById('parallax-container');
+        // Check if user is within the parallax container 1
+        var parallaxContainer = document.getElementById('parallax-container1');
         var parallaxContainerRect = parallaxContainer.getBoundingClientRect();
         var isWithinParallax = parallaxContainerRect.top <= 0 && parallaxContainerRect.top >=-1000 && parallaxContainerRect.bottom <= window.innerHeight;
         console.log(parallaxContainerRect);
@@ -69,23 +69,46 @@ window.onload = function() {
         }
         }
 
-  
-      // Proceed with lingering effect after four full scrolls within parallax-container
-      if (scrollCount >= 4 && !lingeringComplete && isWithinParallax) {
-        console.log('Lingering effect triggered after four full scrolls within the parallax container.');
-  
-        // Add your lingering effect code here (e.g., animations, sound effects)
-  
-        // Update lingering effect flag
-        lingeringComplete = true;
-      }
-  
-      // Fade away the effect after four full scrolls outside parallax-container
-      if (scrollCount >= 8 && lingeringComplete) {
-        console.log('Fading away the lingering effect.');
-        lingeringComplete = false;
-        scrollCount = 0;
-      }
+        var parallaxContainer = document.getElementById('parallax-container2');
+        var parallaxContainerRect = parallaxContainer.getBoundingClientRect();
+        var isWithinParallax = parallaxContainerRect.top >= -1000 && parallaxContainerRect.top <=7000 && parallaxContainerRect.bottom <= window.innerHeight;
+        console.log(parallaxContainerRect);
+      
+        var images = document.querySelectorAll('#i3B, #i3F');
+        console.log(isWithinParallax);
+        console.log(scrollPosition);
+        if (images) {
+          if (isWithinParallax && scrollPosition >= 1 * 100) {
+            images.forEach(function(image) {
+              image.style.opacity = 1;
+            });
+          } else {
+            images.forEach(function(image) {
+              image.style.opacity = 0;
+            });
+        }
+        }
+
+        var parallaxContainer = document.getElementById('parallax-container3');
+        var parallaxContainerRect = parallaxContainer.getBoundingClientRect();
+        var isWithinParallax = parallaxContainerRect.top <= 900 && parallaxContainerRect.top >=-20 && parallaxContainerRect.bottom <= window.innerHeight;
+        console.log(parallaxContainerRect);
+      
+        var images = document.querySelectorAll('#i4B, #i4F');
+        console.log(isWithinParallax);
+        console.log(scrollPosition);
+        if (images) {
+          if (isWithinParallax && scrollPosition >= 1000 * 20) {
+            images.forEach(function(image) {
+              image.style.opacity = 1;
+            });
+          } else {
+            images.forEach(function(image) {
+              image.style.opacity = 0;
+            });
+        }
+        }
+
 
       window.addEventListener('scroll', function() {
         var scrollPosition = window.scrollY;
@@ -93,9 +116,30 @@ window.onload = function() {
         var i2F = document.getElementById('i2F');
     
         // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
-        i2M.style.transform = 'translateX(calc(-45% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
-        i2F.style.transform = 'translateX(calc(35% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i2M.style.transform = 'translateX(calc(-35% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i2F.style.transform = 'translateX(calc(40% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
     });
+
+    window.addEventListener('scroll', function() {
+      var scrollPosition = window.scrollY;
+      var i3B = document.getElementById('i3B');
+      var i3F = document.getElementById('i3F');
+  
+      // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
+      i3B.style.transform = 'translateX(calc(-75% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+      i3F.style.transform = 'translateX(calc(80% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+  });
+
+
+    window.addEventListener('scroll', function() {
+      var scrollPosition = window.scrollY;
+      var i4B = document.getElementById('i4B');
+      var i4F = document.getElementById('i4F');
+
+      // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
+      i4B.style.transform = 'translateX(calc(-250% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+      i4F.style.transform = 'translateX(calc(380% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+  });
   
       // Update previous scroll position
       previousScroll = currentScroll;
@@ -166,4 +210,16 @@ window.onload = function() {
             image.style.position = 'fixed';
         });
     }
+
+      // Set the images to a fixed position when parallax-container is in view
+      var images = document.querySelectorAll('#i4B, #i4F');
+      if (images) {
+          images.forEach(function(image) {
+              image.style.position = 'fixed';
+          });
+      }
 };
+
+// lingering bullshit. could be redundant
+// just focus on y-values in div
+// re-use parallax container so it's universal
