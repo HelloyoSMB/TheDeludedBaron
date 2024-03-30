@@ -267,5 +267,31 @@ p {
     padding-top: 5rem;
     width: 20rem;
 }
-/* at this point, I need to figure out how to remove that pesky white padding around the left and bottom parts of each section with the section's corresponding colour.
-/* let's get the js working too.
+
+
+#parallax-container {
+    position: relative;
+    width: 118vh; /* Adjust width as needed */
+    height: 500px; /* Adjust as needed */
+    margin-left: 7rem; /* Hide overflowing content */
+    align-items: center;
+}
+
+#i2B, #i2M, #i2F {
+    position: absolute;
+    margin-top: -10rem;
+    top: 0;
+    left: 0;
+    width: 100%; /* Make images fill the container */
+    height: auto; /* Maintain aspect ratio */
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#i2M {
+    z-index: 1;
+}
+
+#i2F {
+    z-index: 2;
+}
