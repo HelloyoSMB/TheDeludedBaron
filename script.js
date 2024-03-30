@@ -33,6 +33,7 @@ window.onload = function() {
   
     // Function to handle scrolling and background color transitions
     function handleScroll() {
+      const scrollPosition = window.scrollY;
       // Get the current scroll position
       var currentScroll = window.scrollY || window.pageYOffset;
   
@@ -50,21 +51,20 @@ window.onload = function() {
         // Check if user is within the parallax container
         var parallaxContainer = document.getElementById('parallax-container');
         var parallaxContainerRect = parallaxContainer.getBoundingClientRect();
-        var isWithinParallax = parallaxContainerRect.top >= 0 && parallaxContainerRect.bottom <= window.innerHeight;
-
-        // Show image only when within parallax-container and hide after 400rem scroll
+        var isWithinParallax = parallaxContainerRect.top <= 0 && parallaxContainerRect.top >=-1000 && parallaxContainerRect.bottom <= window.innerHeight;
+        console.log(parallaxContainerRect);
+      
         var images = document.querySelectorAll('#i2B, #i2M, #i2F');
+        console.log(isWithinParallax);
+        console.log(scrollPosition);
         if (images) {
-            if (isWithinParallax && scrollCount < 1000) {
-                console.log('Within parallax and scroll count below threshold');
-                images.forEach(function(image) {
-                    console.log('Setting opacity to 1 for', image.id);
-                    image.style.opacity = 1;
-                });
-            }
-        else {
+          if (isWithinParallax && scrollPosition >= 100 * 10) {
             images.forEach(function(image) {
-            image.style.opacity = 1;
+              image.style.opacity = 1;
+            });
+          } else {
+            images.forEach(function(image) {
+              image.style.opacity = 0;
             });
         }
         }

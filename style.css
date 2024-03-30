@@ -272,7 +272,7 @@ p {
 #parallax-container {
     position: relative;
     width: 118vh; /* Adjust width as needed */
-    height: 100vh; /* Adjust as needed */
+    height: 500px; /* Adjust as needed */
     margin-left: 7rem; /* Hide overflowing content */
     align-items: center;
 }
@@ -284,6 +284,8 @@ p {
     left: 0;
     width: 100%; /* Make images fill the container */
     height: auto; /* Maintain aspect ratio */
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
 #i2M {
