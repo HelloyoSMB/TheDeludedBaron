@@ -355,7 +355,6 @@ p {
     position: relative;
     width: 70vh; /* Adjust width as needed */
     height: 550px; /* Adjust as needed */
-    margin-left: 18rem; /* Hide overflowing content */
     align-items: center;
 }
 
@@ -364,6 +363,7 @@ p {
     margin-top: 5rem;
     top: 0;
     left: 0;
+    margin-left: -38rem;
     width: 40rem; /* Make images fill the container */
     height: 40rem; /* Maintain aspect ratio */
     opacity: 0;
@@ -374,6 +374,7 @@ p {
     z-index: 1;
     position: absolute;
     margin-top: 5rem;
+    margin-left: 110rem;
     top: 0;
     left: 0;
     width: 40rem; /* Make images fill the container */
@@ -386,13 +387,13 @@ p {
     position: relative;
     width: 70vh; /* Adjust width as needed */
     height: 550px; /* Adjust as needed */
-    margin-left: 18rem; /* Hide overflowing content */
     align-items: center;
 }
 
 #i5B {
     position: absolute;
     margin-top: 5rem;
+    margin-left: -188rem;
     top: 0;
     left: 0;
     width: 40rem; /* Make images fill the container */
@@ -405,6 +406,7 @@ p {
     z-index: 1;
     position: absolute;
     margin-top: 5rem;
+    margin-left: 215rem;
     top: 0;
     left: 0;
     width: 40rem; /* Make images fill the container */
@@ -422,8 +424,9 @@ p {
     align-items: center;
 }
 
-#i1B, #i1M, #i1F {
+#i1B {
     position: absolute;
+    z-index: 1;
     margin-top: -10rem;
     top: 0;
     left: 0;
@@ -433,10 +436,27 @@ p {
     transition: opacity 0.5s;
 }
 
+
 #i1M {
-    z-index: 1;
+    position: absolute;
+    z-index: 2;
+    margin-left: -180rem;
+    top: 0;
+    left: 0;
+    width: 100%; /* Make images fill the container */
+    height: auto; /* Maintain aspect ratio */
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
 #i1F {
-    z-index: 2;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    margin-left: 180rem;
+    width: 100%; /* Make images fill the container */
+    height: auto; /* Maintain aspect ratio */
+    opacity: 0;
+    transition: opacity 0.5s;
 }

@@ -151,7 +151,7 @@ window.onload = function() {
 
         var parallaxContainer = document.getElementById('parallax-container6');
         var parallaxContainerRect = parallaxContainer.getBoundingClientRect();
-        var isWithinParallax = parallaxContainerRect.top >= -42000 && parallaxContainerRect.top <=43500 && parallaxContainerRect.bottom <= window.innerHeight;
+        var isWithinParallax = parallaxContainerRect.top <= 160 && parallaxContainerRect.top >=-780 && parallaxContainerRect.bottom <= window.innerHeight;
         console.log(parallaxContainerRect);
       
         var images = document.querySelectorAll('#i1B, #i1M, #i1F');
@@ -206,8 +206,8 @@ window.onload = function() {
         var i6F = document.getElementById('i6F');
 
         // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
-        i6B.style.transform = 'translateX(calc(-75% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
-        i6F.style.transform = 'translateX(calc(80% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i6B.style.transform = 'translateX(calc(-275% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i6F.style.transform = 'translateX(calc(180% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
       });
 
       window.addEventListener('scroll', function() {
