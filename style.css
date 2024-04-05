@@ -355,7 +355,7 @@ p {
     position: relative;
     width: 70vh; /* Adjust width as needed */
     height: 550px; /* Adjust as needed */
-    margin-left: 9rem; /* Hide overflowing content */
+    margin-left: 18rem; /* Hide overflowing content */
     align-items: center;
 }
 
@@ -386,7 +386,7 @@ p {
     position: relative;
     width: 70vh; /* Adjust width as needed */
     height: 550px; /* Adjust as needed */
-    margin-left: 9rem; /* Hide overflowing content */
+    margin-left: 18rem; /* Hide overflowing content */
     align-items: center;
 }
 
@@ -418,6 +418,7 @@ p {
     width: 118vh; /* Adjust width as needed */
     height: 500px; /* Adjust as needed */
     margin-left: 7rem; /* Hide overflowing content */
+    margin-top: 16rem;
     align-items: center;
 }
 

@@ -206,8 +206,8 @@ window.onload = function() {
         var i6F = document.getElementById('i6F');
 
         // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
-        i3B.style.transform = 'translateX(calc(-75% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
-        i3F.style.transform = 'translateX(calc(80% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i6B.style.transform = 'translateX(calc(-75% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i6F.style.transform = 'translateX(calc(80% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
       });
 
       window.addEventListener('scroll', function() {
@@ -216,8 +216,8 @@ window.onload = function() {
         var i5F = document.getElementById('i5F');
 
         // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
-        i3B.style.transform = 'translateX(calc(-75% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
-        i3F.style.transform = 'translateX(calc(80% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i5B.style.transform = 'translateX(calc(-75% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i5F.style.transform = 'translateX(calc(80% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
       });
 
       window.addEventListener('scroll', function() {
@@ -226,8 +226,8 @@ window.onload = function() {
         var i1F = document.getElementById('i1F');
     
         // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
-        i1M.style.transform = 'translateX(calc(-35% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
-        i1F.style.transform = 'translateX(calc(40% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i1M.style.transform = 'translateX(calc(-100% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i1F.style.transform = 'translateX(calc(100% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
       });
         
       // Update previous scroll position
@@ -300,13 +300,22 @@ window.onload = function() {
         });
     }
 
-      // Set the images to a fixed position when parallax-container is in view
-      var images = document.querySelectorAll('#i4B, #i4F');
-      if (images) {
-          images.forEach(function(image) {
-              image.style.position = 'fixed';
-          });
-      }
+    // Set the images to a fixed position when parallax-container is in view
+    var images = document.querySelectorAll('#i4B, #i4F');
+    if (images) {
+        images.forEach(function(image) {
+            image.style.position = 'fixed';
+        });
+    }
+
+  
+    // Set the images to a fixed position when parallax-container is in view
+    var images = document.querySelectorAll('#i1B, #i1M, #i1F');
+    if (images) {
+        images.forEach(function(image) {
+            image.style.position = 'fixed';
+        });
+    }
 };
 
 // lingering bullshit. could be redundant
