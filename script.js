@@ -228,7 +228,8 @@ window.onload = function() {
         // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
         i2M.style.transform = 'translateX(calc(-35% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
         i2F.style.transform = 'translateX(calc(40% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
-  
+      });
+        
       // Update previous scroll position
       previousScroll = currentScroll;
   
