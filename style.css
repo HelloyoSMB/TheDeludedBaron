@@ -350,3 +350,92 @@ p {
     opacity: 0;
     transition: opacity 0.5s;
 }
+
+#parallax-container4 {
+    position: relative;
+    width: 70vh; /* Adjust width as needed */
+    height: 550px; /* Adjust as needed */
+    margin-left: 9rem; /* Hide overflowing content */
+    align-items: center;
+}
+
+#i6B {
+    position: absolute;
+    margin-top: 5rem;
+    top: 0;
+    left: 0;
+    width: 40rem; /* Make images fill the container */
+    height: 40rem; /* Maintain aspect ratio */
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#i6F {
+    z-index: 1;
+    position: absolute;
+    margin-top: 5rem;
+    top: 0;
+    left: 0;
+    width: 40rem; /* Make images fill the container */
+    height: 40rem; /* Maintain aspect ratio */
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#parallax-container5 {
+    position: relative;
+    width: 70vh; /* Adjust width as needed */
+    height: 550px; /* Adjust as needed */
+    margin-left: 9rem; /* Hide overflowing content */
+    align-items: center;
+}
+
+#i5B {
+    position: absolute;
+    margin-top: 5rem;
+    top: 0;
+    left: 0;
+    width: 40rem; /* Make images fill the container */
+    height: 40rem; /* Maintain aspect ratio */
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#i5F {
+    z-index: 1;
+    position: absolute;
+    margin-top: 5rem;
+    top: 0;
+    left: 0;
+    width: 40rem; /* Make images fill the container */
+    height: 40rem; /* Maintain aspect ratio */
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#parallax-container6 {
+    position: relative;
+    width: 118vh; /* Adjust width as needed */
+    height: 500px; /* Adjust as needed */
+    margin-left: 7rem; /* Hide overflowing content */
+    align-items: center;
+}
+
+#i1B, #i1M, #i1F {
+    position: absolute;
+    margin-top: -10rem;
+    top: 0;
+    left: 0;
+    width: 100%; /* Make images fill the container */
+    height: auto; /* Maintain aspect ratio */
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#i1M {
+    z-index: 1;
+}
+
+#i1F {
+    z-index: 2;
+}

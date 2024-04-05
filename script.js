@@ -109,7 +109,66 @@ window.onload = function() {
         }
         }
 
+        var parallaxContainer = document.getElementById('parallax-container4');
+        var parallaxContainerRect = parallaxContainer.getBoundingClientRect();
+        var isWithinParallax = parallaxContainerRect.top >= -26000 && parallaxContainerRect.top <=27000 && parallaxContainerRect.bottom <= window.innerHeight;
+        console.log(parallaxContainerRect);
+      
+        var images = document.querySelectorAll('#i6B, #i6F');
+        console.log(isWithinParallax);
+        console.log(scrollPosition);
+        if (images) {
+          if (isWithinParallax && scrollPosition >= 1000 * 20) {
+            images.forEach(function(image) {
+              image.style.opacity = 1;
+            });
+          } else {
+            images.forEach(function(image) {
+              image.style.opacity = 0;
+            });
+        }
+        }
 
+        var parallaxContainer = document.getElementById('parallax-container5');
+        var parallaxContainerRect = parallaxContainer.getBoundingClientRect();
+        var isWithinParallax = parallaxContainerRect.top >= -36900 && parallaxContainerRect.top <=38000 && parallaxContainerRect.bottom <= window.innerHeight;
+        console.log(parallaxContainerRect);
+      
+        var images = document.querySelectorAll('#i5B, #i5F');
+        console.log(isWithinParallax);
+        console.log(scrollPosition);
+        if (images) {
+          if (isWithinParallax && scrollPosition >= 1000 * 20) {
+            images.forEach(function(image) {
+              image.style.opacity = 1;
+            });
+          } else {
+            images.forEach(function(image) {
+              image.style.opacity = 0;
+            });
+        }
+        }
+
+        var parallaxContainer = document.getElementById('parallax-container6');
+        var parallaxContainerRect = parallaxContainer.getBoundingClientRect();
+        var isWithinParallax = parallaxContainerRect.top >= -42000 && parallaxContainerRect.top <=43500 && parallaxContainerRect.bottom <= window.innerHeight;
+        console.log(parallaxContainerRect);
+      
+        var images = document.querySelectorAll('#i1B, #i1M, #i1F');
+        console.log(isWithinParallax);
+        console.log(scrollPosition);
+        if (images) {
+          if (isWithinParallax && scrollPosition >= 100 * 10) {
+            images.forEach(function(image) {
+              image.style.opacity = 1;
+            });
+          } else {
+            images.forEach(function(image) {
+              image.style.opacity = 0;
+            });
+        }
+        }
+        
       window.addEventListener('scroll', function() {
         var scrollPosition = window.scrollY;
         var i2M = document.getElementById('i2M');
@@ -120,26 +179,55 @@ window.onload = function() {
         i2F.style.transform = 'translateX(calc(40% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
     });
 
-    window.addEventListener('scroll', function() {
-      var scrollPosition = window.scrollY;
-      var i3B = document.getElementById('i3B');
-      var i3F = document.getElementById('i3F');
-  
-      // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
-      i3B.style.transform = 'translateX(calc(-75% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
-      i3F.style.transform = 'translateX(calc(80% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
-  });
+      window.addEventListener('scroll', function() {
+        var scrollPosition = window.scrollY;
+        var i3B = document.getElementById('i3B');
+        var i3F = document.getElementById('i3F');
+    
+        // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
+        i3B.style.transform = 'translateX(calc(-75% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i3F.style.transform = 'translateX(calc(80% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+    });
 
 
-    window.addEventListener('scroll', function() {
-      var scrollPosition = window.scrollY;
-      var i4B = document.getElementById('i4B');
-      var i4F = document.getElementById('i4F');
+      window.addEventListener('scroll', function() {
+        var scrollPosition = window.scrollY;
+        var i4B = document.getElementById('i4B');
+        var i4F = document.getElementById('i4F');
 
-      // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
-      i4B.style.transform = 'translateX(calc(-250% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
-      i4F.style.transform = 'translateX(calc(380% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
-  });
+        // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
+        i4B.style.transform = 'translateX(calc(-250% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i4F.style.transform = 'translateX(calc(380% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+    });
+
+      window.addEventListener('scroll', function() {
+        var scrollPosition = window.scrollY;
+        var i4B = document.getElementById('i6B');
+        var i4F = document.getElementById('i6F');
+
+        // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
+        i6B.style.transform = 'translateX(calc(-250% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i6F.style.transform = 'translateX(calc(380% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+      });
+
+      window.addEventListener('scroll', function() {
+        var scrollPosition = window.scrollY;
+        var i5B = document.getElementById('i4B');
+        var i5F = document.getElementById('i4F');
+
+        // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
+        i5B.style.transform = 'translateX(calc(-250% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i5F.style.transform = 'translateX(calc(380% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+      });
+
+      window.addEventListener('scroll', function() {
+        var scrollPosition = window.scrollY;
+        var i2M = document.getElementById('i1M');
+        var i2F = document.getElementById('i1F');
+    
+        // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
+        i2M.style.transform = 'translateX(calc(-35% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i2F.style.transform = 'translateX(calc(40% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
   
       // Update previous scroll position
       previousScroll = currentScroll;
