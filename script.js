@@ -202,8 +202,8 @@ window.onload = function() {
 
       window.addEventListener('scroll', function() {
         var scrollPosition = window.scrollY;
-        var i4B = document.getElementById('i6B');
-        var i4F = document.getElementById('i6F');
+        var i6B = document.getElementById('i6B');
+        var i6F = document.getElementById('i6F');
 
         // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
         i6B.style.transform = 'translateX(calc(-250% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
@@ -212,8 +212,8 @@ window.onload = function() {
 
       window.addEventListener('scroll', function() {
         var scrollPosition = window.scrollY;
-        var i5B = document.getElementById('i4B');
-        var i5F = document.getElementById('i4F');
+        var i5B = document.getElementById('i5B');
+        var i5F = document.getElementById('i5F');
 
         // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
         i5B.style.transform = 'translateX(calc(-250% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
@@ -222,12 +222,12 @@ window.onload = function() {
 
       window.addEventListener('scroll', function() {
         var scrollPosition = window.scrollY;
-        var i2M = document.getElementById('i1M');
-        var i2F = document.getElementById('i1F');
+        var i1M = document.getElementById('i1M');
+        var i1F = document.getElementById('i1F');
     
         // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
-        i2M.style.transform = 'translateX(calc(-35% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
-        i2F.style.transform = 'translateX(calc(40% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i1M.style.transform = 'translateX(calc(-35% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i1F.style.transform = 'translateX(calc(40% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
       });
         
       // Update previous scroll position
