@@ -206,8 +206,8 @@ window.onload = function() {
         var i6F = document.getElementById('i6F');
 
         // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
-        i6B.style.transform = 'translateX(calc(-250% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
-        i6F.style.transform = 'translateX(calc(380% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i3B.style.transform = 'translateX(calc(-75% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i3F.style.transform = 'translateX(calc(80% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
       });
 
       window.addEventListener('scroll', function() {
@@ -216,8 +216,8 @@ window.onload = function() {
         var i5F = document.getElementById('i5F');
 
         // Adjust the transform property of i2M, i2B, and i2F based on the scroll position
-        i5B.style.transform = 'translateX(calc(-250% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
-        i5F.style.transform = 'translateX(calc(380% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i3B.style.transform = 'translateX(calc(-75% + ' + (scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
+        i3F.style.transform = 'translateX(calc(80% + ' + (-scrollPosition * 0.1) + 'px))'; // Adjust the multiplier as needed
       });
 
       window.addEventListener('scroll', function() {
