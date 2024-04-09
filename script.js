@@ -1,49 +1,74 @@
 window.onload = function() {
-    // Define audio files for each section
-    var audioFiles = {
+  // Define audio files for each section
+  var audioFiles = {
       '#titleAudio': 'Fallacia-Prterita.mp3',
-      '#Chap2TAudio': 'Contra Passeres 2.mp3',
-      '#Chap2Audio': 'Contra Passeres 2.mp3',
+      '#Chap2TAudio': 'Contra Passeres.mp3',
+      '#Chap2Audio': 'Contra Passeres.mp3',
       '#Chap3TAudio': 'Veritas.mp3',
       '#Chap3Audio': 'Veritas.mp3',
-      '#Chap4TAudio': 'Exeunt 2.mp3',
-      '#Chap4Audio': 'Exeunt 2.mp3',
+      '#Chap4TAudio': 'Exeunt.mp3',
+      '#Chap4Audio': 'Exeunt.mp3',
       '#Chap5TAudio': 'Epilogue.mp3',
       '#Chap5Audio': 'Epilogue.mp3'
-    };
-  
-    var audio = new Audio(); // Create a new audio element
-    var isPaused = false; // Flag to track if audio is paused
-    var previousScroll = window.scrollY || window.pageYOffset; // Previous scroll position
-    var currentAudioFile = null; // Variable to track the current audio file
-    var scrollCount = 0; // Variable to track the number of scrolls
-    var lingeringComplete = false; // Variable to track if the lingering effect is complete
-  
-    // Function to play audio for a specific section
-    function playAudio(section) {
+  };
+
+  var audio = new Audio(); // Create a new audio element
+  var isPaused = false; // Flag to track if audio is paused
+  var previousScroll = window.scrollY || window.pageYOffset; // Previous scroll position
+  var currentAudioFile = null; // Variable to track the current audio file
+
+  // Function to play audio for a specific section
+  function playAudio(section) {
       var audioFile = audioFiles[section];
       if (audioFile) {
-        audio.src = audioFile;
-        audio.play().catch(function(error) {
-          console.error('Failed to play audio:', error);
-        });
-        currentAudioFile = audioFile;
+          audio.src = audioFile;
+          audio.play()
+              .catch(function(error) {
+                  console.error('Failed to play audio:', error);
+              });
+          currentAudioFile = audioFile;
       }
-    }
-  
-    // Function to handle scrolling and background color transitions
-    function handleScroll() {
-      const scrollPosition = window.scrollY;
+  }
+
+window.onload = function() {
       // Get the current scroll position
       var currentScroll = window.scrollY || window.pageYOffset;
-  
+
       // Determine scroll direction
       var scrollDirection = currentScroll > previousScroll ? 'down' : 'up';
-  
-      // Increment scroll count if scrolling down
-      if (scrollDirection === 'down') {
-        scrollCount++;
+
+      // Find the current section
+      var sections = document.querySelectorAll('section');
+      var currentSectionIndex = 0;
+      for (var i = sections.length - 1; i >= 0; i--) {
+          if (currentScroll >= sections[i].offsetTop) {
+              currentSectionIndex = i;
+              break;
+          }
       }
+
+      // Play audio for the current section when scrolling down and audio file is different
+      if (scrollDirection === 'down') {
+          var nextAudioFile = audioFiles['#' + sections[currentSectionIndex].id + 'Audio'];
+          if (nextAudioFile && nextAudioFile !== currentAudioFile) {
+              playAudio('#' + sections[currentSectionIndex].id + 'Audio');
+          }
+      }
+
+      // Update previous scroll position
+window.onload = function() {
+
+  // Initial call to handleScroll
+  handleScroll();
+
+  // Start playing audio for the first section when the page loads
+  // This function will be triggered by a user click on the document body
+  document.body.addEventListener('click', function() {
+      playAudio('#titleAudio');
+      // Remove the click event listener after the first click to avoid multiple plays
+      document.body.removeEventListener('click', arguments.callee);
+  });
+};
   
       // Check if user is within the parallax container
         // Inside the handleScroll function
