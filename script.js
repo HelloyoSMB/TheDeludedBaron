@@ -60,7 +60,52 @@ window.onload = function() {
 
       // Update background color based on current section
       updateBackgroundColor();
-  
+
+      // Update parallax effects
+      updateParallaxEffects();
+  }
+
+  // Function to update background color based on current section
+  function updateBackgroundColor() {
+      var sections = document.querySelectorAll('section');
+      var currentSectionIndex = 0;
+      var backgroundColor;
+
+      // Find the current section
+      for (var i = sections.length - 1; i >= 0; i--) {
+          if (window.scrollY >= sections[i].offsetTop) {
+              currentSectionIndex = i;
+              break;
+          }
+      }
+
+      // Determine background color based on current section
+      switch (sections[currentSectionIndex].id) {
+          case 'Chap1T':
+          case 'Chap1':
+              backgroundColor = '#000000'; // Black
+              break;
+          case 'Chap2T':
+          case 'Chap2':
+              backgroundColor = '#000030'; // Dark Navy Blue
+              break;
+          case 'Chap3T':
+          case 'Chap3':
+              backgroundColor = '#8f0a24'; // Crimson
+              break;
+          case 'Chap4T':
+          case 'Chap4':
+              backgroundColor = '#6f9b6f'; // Pale Sage Green
+              break;
+          default:
+              backgroundColor = '#FFFFFF'; // White (default)
+      }
+
+      // Apply background color transition to the body
+      document.body.style.transition = 'background-color 1s';
+      document.body.style.backgroundColor = backgroundColor;
+  }
+
         // Check if user is within the parallax container 1
         var parallaxContainer1 = document.getElementById('parallax-container1');
         var parallaxContainerRect1 = parallaxContainer1.getBoundingClientRect();
@@ -260,69 +305,9 @@ window.onload = function() {
             });
           }
         }
-  
-// lingering bullshit. could be redundant
-// just focus on y-values in div
-// re-use parallax container so it's universal
 
-    // Function to update background color based on current section
-    function updateBackgroundColor() {
-      var sections = document.querySelectorAll('section');
-      var currentSectionIndex = 0;
-      var backgroundColor;
-
-      // Find the current section
-      for (var i = sections.length - 1; i >= 0; i--) {
-          if (window.scrollY >= sections[i].offsetTop) {
-              currentSectionIndex = i;
-              break;
-          }
-      }
-
-      // Determine background color based on current section
-      switch (sections[currentSectionIndex].id) {
-          case 'Chap1T':
-          case 'Chap1':
-              backgroundColor = '#000000'; // Black
-              break;
-          case 'Chap2T':
-          case 'Chap2':
-              backgroundColor = '#000030'; // Dark Navy Blue
-              break;
-          case 'Chap3T':
-          case 'Chap3':
-              backgroundColor = '#8f0a24'; // Crimson
-              break;
-          case 'Chap4T':
-          case 'Chap4':
-              backgroundColor = '#6f9b6f'; // Pale Sage Green
-              break;
-          default:
-              backgroundColor = '#FFFFFF'; // White (default)
-      }
-
-      // Apply background color transition to the body
-      document.body.style.transition = 'background-color 1s';
-      document.body.style.backgroundColor = backgroundColor;
-  }
-
-  // Function to update parallax effects for a given container
-  function updateParallax(containerSelector, imageSelectors, multiplier, threshold) {
-      var container = document.querySelector(containerSelector);
-      var containerRect = container.getBoundingClientRect();
-      var isWithinView = containerRect.top <= window.innerHeight && containerRect.bottom >= 0;
-
-      if (isWithinView) {
-          var scrollPosition = window.scrollY;
-          imageSelectors.forEach(function(imageSelector) {
-              var image = document.querySelector(imageSelector);
-              if (image) {
-                  var translateY = (scrollPosition - containerRect.top) * multiplier + 'px';
-                  image.style.transform = 'translateY(' + translateY + ')';
-              }
-          });
-      }
-  }
+  // Update background color based on current section
+  updateBackgroundColor();
 
       // Set the images to a fixed position when parallax-container is in view
       var images1 = document.querySelectorAll('#i2B, #i2M, #i2F');
@@ -348,17 +333,35 @@ window.onload = function() {
       });
     }
 
-  // Scroll event listener
-  window.addEventListener('scroll', handleScroll);
+      // Function to update parallax effects for a given container
+      function updateParallax(containerSelector, imageSelectors, multiplier, threshold) {
+        var container = document.querySelector(containerSelector);
+        var containerRect = container.getBoundingClientRect();
+        var isWithinView = containerRect.top <= window.innerHeight && containerRect.bottom >= 0;
 
-  // Initial call to handleScroll
-  handleScroll();
+        if (isWithinView) {
+            var scrollPosition = window.scrollY;
+            imageSelectors.forEach(function(imageSelector) {
+                var image = document.querySelector(imageSelector);
+                if (image) {
+                    var translateY = (scrollPosition - containerRect.top) * multiplier + 'px';
+                    image.style.transform = 'translateY(' + translateY + ')';
+                }
+            });
+        }
+    }
 
-  // Start playing audio for the first section when the page loads
-  // This function will be triggered by a user click on the document body
-  document.body.addEventListener('click', function() {
-      playAudio('#titleAudio');
-      // Remove the click event listener after the first click to avoid multiple plays
-      document.body.removeEventListener('click', arguments.callee);
-  });
+    // Scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Initial call to handleScroll
+    handleScroll();
+
+    // Start playing audio for the first section when the page loads
+    // This function will be triggered by a user click on the document body
+    document.body.addEventListener('click', function() {
+        playAudio('#titleAudio');
+        // Remove the click event listener after the first click to avoid multiple plays
+        document.body.removeEventListener('click', arguments.callee);
+    });
 };
