@@ -45,6 +45,48 @@ window.onload = function() {
       scrollCount++;
     }
 
+     // Pause audio if scrolling stops
+     if (currentScroll === previousScroll) {
+      audio.pause();
+  } else {
+      // Determine scroll direction
+      var scrollDirection = currentScroll > previousScroll ? 'down' : 'up';
+  // Determine scroll direction
+  var scrollDirection = currentScroll > previousScroll ? 'down' : 'up';
+
+      // Adjust audio playback based on scroll direction
+      if (scrollDirection === 'up') {
+          // Rewind 10 seconds if scrolling up
+          audio.currentTime = Math.max(0, audio.currentTime - 10);
+  // Find the current section
+  var sections = document.querySelectorAll('section');
+  var currentSectionIndex = 0;
+  for (var i = sections.length - 1; i >= 0; i--) {
+      if (currentScroll >= sections[i].offsetTop) {
+          currentSectionIndex = i;
+          break;
+      }
+  }
+
+      // Find the current section
+      var sections = document.querySelectorAll('section');
+      var currentSectionIndex = 0;
+      for (var i = sections.length - 1; i >= 0; i--) {
+          if (currentScroll >= sections[i].offsetTop) {
+              currentSectionIndex = i;
+              break;
+          }
+  // Play audio for the current section when scrolling down and audio file is different
+  if (scrollDirection === 'down') {
+      var nextAudioFile = audioFiles['#' + sections[currentSectionIndex].id + 'Audio'];
+      if (nextAudioFile && nextAudioFile !== currentAudioFile) {
+          playAudio('#' + sections[currentSectionIndex].id + 'Audio');
+      }
+
+      // Play audio for the current section
+      playAudio(sections[currentSectionIndex].id);
+  }
+
     // Check if user is within the parallax container
       // Inside the handleScroll function
 
