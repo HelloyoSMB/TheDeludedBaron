@@ -19,7 +19,6 @@ window.onload = function() {
   var scrollCount = 0; // Variable to track the number of scrolls
   var lingeringComplete = false; // Variable to track if the lingering effect is complete
 
-  // Function to play audio for a specific section
   function playAudio(section) {
     var audioFile = audioFiles[section];
     if (audioFile) {
@@ -31,6 +30,46 @@ window.onload = function() {
     }
   }
 
+  var previousScroll = window.scrollY || window.pageYOffset;
+
+  function handleScroll() {
+    var currentScroll = window.scrollY || window.pageYOffset;
+    var scrollDirection = currentScroll > previousScroll ? 'down' : 'up';
+    previousScroll = currentScroll;
+    // Adjust audio playback based on scroll direction
+    // Pause audio if scrolling stops
+    if (currentScroll === previousScroll) {
+      audio.pause();
+      return;
+    }
+
+    var sections = document.querySelectorAll('section');
+    var currentSectionIndex = 0;
+    for (var i = sections.length - 1; i >= 0; i--) {
+      if (currentScroll >= sections[i].offsetTop) {
+        currentSectionIndex = i;
+        break;
+      }
+    }
+
+    var nextAudioFile = audioFiles['#' + sections[currentSectionIndex].id + 'Audio'];
+    if (nextAudioFile && nextAudioFile !== currentAudioFile) {
+      playAudio('#' + sections[currentSectionIndex].id + 'Audio');
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll);
+
+  // Initial call to handleScroll
+  handleScroll();
+
+  // Start playing audio for the first section when the page loads
+  document.body.addEventListener('click', function() {
+    playAudio('#titleAudio');
+    // Remove the click event listener after the first click to avoid multiple plays
+    document.body.removeEventListener('click', arguments.callee);
+  });
+  
   // Function to handle scrolling and background color transitions
   function handleScroll() {
     const scrollPosition = window.scrollY;
@@ -45,47 +84,6 @@ window.onload = function() {
       scrollCount++;
     }
 
-     // Pause audio if scrolling stops
-     if (currentScroll === previousScroll) {
-      audio.pause();
-  } else {
-      // Determine scroll direction
-      var scrollDirection = currentScroll > previousScroll ? 'down' : 'up';
-  // Determine scroll direction
-  var scrollDirection = currentScroll > previousScroll ? 'down' : 'up';
-
-      // Adjust audio playback based on scroll direction
-      if (scrollDirection === 'up') {
-          // Rewind 10 seconds if scrolling up
-          audio.currentTime = Math.max(0, audio.currentTime - 10);
-  // Find the current section
-  var sections = document.querySelectorAll('section');
-  var currentSectionIndex = 0;
-  for (var i = sections.length - 1; i >= 0; i--) {
-      if (currentScroll >= sections[i].offsetTop) {
-          currentSectionIndex = i;
-          break;
-      }
-  }
-
-      // Find the current section
-      var sections = document.querySelectorAll('section');
-      var currentSectionIndex = 0;
-      for (var i = sections.length - 1; i >= 0; i--) {
-          if (currentScroll >= sections[i].offsetTop) {
-              currentSectionIndex = i;
-              break;
-          }
-  // Play audio for the current section when scrolling down and audio file is different
-  if (scrollDirection === 'down') {
-      var nextAudioFile = audioFiles['#' + sections[currentSectionIndex].id + 'Audio'];
-      if (nextAudioFile && nextAudioFile !== currentAudioFile) {
-          playAudio('#' + sections[currentSectionIndex].id + 'Audio');
-      }
-
-      // Play audio for the current section
-      playAudio(sections[currentSectionIndex].id);
-  }
 
     // Check if user is within the parallax container
       // Inside the handleScroll function
@@ -333,6 +331,7 @@ window.onload = function() {
       // Remove the click event listener after the first click to avoid multiple plays
       document.body.removeEventListener('click', arguments.callee);
   });
+  
 
   // Set the images to a fixed position when parallax-container is in view
   var images = document.querySelectorAll('#i2B, #i2M, #i2F');
