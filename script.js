@@ -16,20 +16,46 @@ window.onload = function() {
   var isPaused = false; // Flag to track if audio is paused
   var previousScroll = window.scrollY || window.pageYOffset; // Previous scroll position
   var currentAudioFile = null; // Variable to track the current audio file
-  var scrollCount = 0; // Variable to track the number of scrolls
-  var lingeringComplete = false; // Variable to track if the lingering effect is complete
 
   // Function to play audio for a specific section
   function playAudio(section) {
-    var audioFile = audioFiles[section];
-    if (audioFile) {
-      audio.src = audioFile;
-      audio.play().catch(function(error) {
-        console.error('Failed to play audio:', error);
-      });
-      currentAudioFile = audioFile;
-    }
+      var audioFile = audioFiles[section];
+      if (audioFile) {
+          audio.src = audioFile;
+          audio.play()
+              .catch(function(error) {
+                  console.error('Failed to play audio:', error);
+              });
+          currentAudioFile = audioFile;
+      }
   }
+
+  // Function to handle scrolling and background color transitions
+  function handleScroll() {
+      // Get the current scroll position
+      var currentScroll = window.scrollY || window.pageYOffset;
+
+      // Determine scroll direction
+      var scrollDirection = currentScroll > previousScroll ? 'down' : 'up';
+
+      // Find the current section
+      var sections = document.querySelectorAll('section');
+      var currentSectionIndex = 0;
+      for (var i = sections.length - 1; i >= 0; i--) {
+          if (currentScroll >= sections[i].offsetTop) {
+              currentSectionIndex = i;
+              break;
+          }
+      }
+
+      // Play audio for the current section when scrolling down and audio file is different
+      if (scrollDirection === 'down') {
+          var nextAudioFile = audioFiles['#' + sections[currentSectionIndex].id + 'Audio'];
+          if (nextAudioFile && nextAudioFile !== currentAudioFile) {
+              playAudio('#' + sections[currentSectionIndex].id + 'Audio');
+          }
+      }
+
 
   // Function to handle scrolling and background color transitions
   function handleScroll() {
